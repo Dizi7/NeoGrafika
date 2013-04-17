@@ -1,0 +1,579 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<!--[if IE 8]><link rel="stylesheet" type="text/css" href="style/css/ie8.css" media="all" /><![endif]-->
+	<!--[if IE 9]><link rel="stylesheet" type="text/css" href="style/css/ie9.css" media="all" /><![endif]-->
+	<!--[if lt IE 9]><script src="style/js/html5.js" type="text/javascript"></script><![endif]-->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title><?php bloginfo('description'); ?></title>
+	<link rel="shortcut icon" type="image/x-icon" href="style/images/favicon.png" />
+
+	<link rel="stylesheet" type="text/css" href="style.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="style/css/color/red.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="style/css/media-queries.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="style/js/fancybox/jquery.fancybox.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="style/js/fancybox/helpers/jquery.fancybox-thumbs.css?v=1.0.2" />
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="style/type/fontello.css">
+
+	<script type="text/javascript" src="style/js/jquery.min.js"></script>
+	<script type="text/javascript" src="style/js/ddsmoothmenu.js"></script>
+	<script type="text/javascript" src="style/js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="style/js/selectnav.js"></script>
+	<script type="text/javascript" src="style/js/jquery.slickforms.js"></script>
+	<script type="text/javascript" src="style/js/jquery.easytabs.min.js"></script>
+	<script type="text/javascript" src="style/js/jquery.fitvids.js"></script>
+	<script type="text/javascript" src="style/js/jquery.fancybox.pack.js"></script>
+	<script type="text/javascript" src="style/js/fancybox/helpers/jquery.fancybox-thumbs.js?v=1.0.2"></script>
+	<script type="text/javascript" src="style/js/fancybox/helpers/jquery.fancybox-media.js?v=1.0.0"></script>
+	<script type="text/javascript" src="style/js/jquery.themepunch.plugins.min.js"></script>
+	<script type="text/javascript" src="style/js/jquery.themepunch.revolution.min.js"></script>
+	<script type="text/javascript" src="style/js/jquery.touchcarousel-1.2.min.js"></script>
+	<script type="text/javascript" src="style/js/twitter.min.js"></script>
+	<script type="text/javascript" src="style/js/boostrapslider.js"></script>
+	<?php wp_head(); ?>
+	</head>
+	<body class="full-layout">
+	<!-- Begin Body Wrapper -->
+	<div class="body-wrapper">
+	<!-- Begin Top Wrapper -->
+	<div class="top-wrapper">
+	  <header>
+		<div class="inner">
+		  <div class="logo"><a href="index.html"><img src="style/images/logo.png" alt="" /></a></div>
+		  <!-- Begin Menu -->
+		  <nav id="menu" class="menu">
+			<ul id="tiny">
+			  <li class="active"><a href="index.html">Home</a>
+				<ul>
+				  <li><a href="index.html">Showcase</a></li>
+				  <li><a href="index2.html">Business Style I</a></li>
+				  <li><a href="index3.html">Business Style II</a></li>
+				  <li><a href="index4.html">Latest Blog</a></li>
+				  <li><a href="index5.html">Pricing Table</a></li>
+				</ul>
+			  </li>
+			  <li><a href="portfolio.html">Portfolio</a>
+				<ul>
+				  <li><a href="portfolio.html">Showcase</a></li>
+				  <li><a href="portfolio2.html">Touch Carousel</a></li>
+				  <li><a href="portfolio3.html">Lightbox Portfolio</a></li>
+				  <li><a href="portfolio4.html">Classic Portfolio</a></li>
+				  <li><a href="portfolio-post1.html">Post with Images</a></li>
+				  <li><a href="portfolio-post2.html">Post with Slider</a></li>
+				  <li><a href="portfolio-post3.html">Post with Videos</a></li>
+				</ul>
+			  </li>
+			  <li><a href="blog.html">Blog</a>
+				<ul>
+				  <li><a href="blog.html">Blog I</a></li>
+				  <li><a href="blog2.html">Blog II</a></li>
+				  <li><a href="blog3.html">Blog III</a></li>
+				  <li><a href="blog-post.html">Blog Post</a></li>
+				</ul>
+			  </li>
+			  <li><a href="about.html">Pages</a>
+				<ul>
+				  <li><a href="about.html">About</a></li>
+				  <li><a href="services.html">Services</a></li>
+				</ul>
+			  </li>
+			  <li><a href="index2.html">Features</a>
+				<ul>
+				  <li><a href="index2.html">Footer with Widgets</a></li>
+				  <li><a href="tab-toggle.html">Tabs and Toggle</a></li>
+				  <li><a href="button-box.html">Buttons and Boxes</a></li>
+				  <li><a href="pricing-table.html">Pricing Tables</a></li>
+				  <li><a href="columns.html">Columns</a></li>
+				  <li><a href="typography.html">Typography</a></li>
+				  <li><a href="retina-icons.html">Retina Icons</a></li>
+				</ul>
+			  </li>
+			  <li><a href="contact.html">Contact</a></li>
+			</ul>
+		  </nav>
+		  <!-- End Menu -->
+		  <div class="clear"></div>
+		</div>
+	  </header>
+	  <div class="bannercontainer">
+		<div class="banner">
+		  <ul>
+			<li data-transition="fade"> <img src="style/images/art/slider-transparent.png" alt="" style="background-color:#2a2a2a" />
+			  <div class="caption sfl huge" data-x="306" data-y="90" data-speed="300" data-start="100" data-easing="easeOutExpo">We are</div>
+			  <div class="caption sft huge" data-x="513" data-y="90" data-speed="300" data-start="800" data-easing="easeOutExpo"><strong>Webpaint.</strong></div>
+			  <div class="caption sfl big" data-x="center" data-y="176" data-speed="300" data-start="1100" data-easing="easeOutExpo">A <em>digital</em> <span class="colored">&</span> <em>branding</em> agency based in London, England.</div>
+			  <div class="caption sfr big" data-x="center" data-y="245" data-speed="300" data-start="1400" data-easing="easeOutExpo">We love to turn ideas into beautiful things.</div>
+			  <div class="caption sfb" data-x="center" data-y="329" data-speed="300" data-start="1700" data-easing="easeOutExpo"><a href="#" class="button">See Portfolio</a></div>
+			</li>
+			<li data-transition="fade"> <img src="style/images/art/slider-transparent.png" alt="" style="background-color:#2a2a2a" />
+			  <div class="caption lfb" data-x="553" data-y="45" data-speed="900" data-start="100" data-easing="easeOutSine"><img src="style/images/art/slider-browser.png" alt="" /></div>
+			  <div class="caption lft" data-x="398" data-y="70" data-speed="900" data-start="900" data-easing="easeOutSine"><img src="style/images/art/slider-tablet.png" alt="" /></div>
+			  <div class="caption lfr" data-x="943" data-y="120" data-speed="900" data-start="1200" data-easing="easeOutSine"><img src="style/images/art/slider-mobile.png" alt="" /></div>
+			  <div class="caption sfl big" data-x="32" data-y="100" data-speed="900" data-start="1500" data-easing="easeOutExpo"><strong>We design & build</strong></div>
+			  <div class="caption sfr big" data-x="32" data-y="150" data-speed="900" data-start="1800" data-easing="easeOutExpo"><strong><span class="colored">responsive</span> themes</strong></div>
+			  <div class="caption sfb" data-x="32" data-y="230" data-speed="900" data-start="2100" data-easing="easeOutExpo"><a href="#" class="button gray">Get in Touch</a></div>
+			</li>
+			<li data-transition="fade"> <img src="style/images/art/slider-bg3.jpg" alt="" />
+			  <div class="caption sft huge" data-x="center" data-y="117" data-speed="300" data-start="100" data-easing="easeOutExpo"><strong>Creativity at its best</strong></div>
+			  <div class="caption sfl big" data-x="center" data-y="203" data-speed="300" data-start="800" data-easing="easeOutExpo">Great design comes with understanding customer needs.</div>
+			  <div class="caption sfb" data-x="center" data-y="299" data-speed="300" data-start="1100" data-easing="easeOutExpo"><a href="#" class="button">Get in Touch</a></div>
+			</li>
+		  </ul>
+		  <div class="tp-bannertimer tp-bottom"></div>
+		</div>
+	  </div>
+	</div>
+	<!-- End Top Wrapper -->
+	<!-- Begin Dark Wrapper -->
+	<div class="dark-wrapper">
+	  <!-- Begin Inner -->
+	  <div class="inner">
+		<div class="box-wrapper">
+		  <div class="one-fourth box"> <i class="icon-lamp special"></i>
+			<h3>Creative Ideas</h3>
+			<p>Nulla vitae  libero, a pharetra augue. Integer posuere  a ante venenatis condimentum.</p>
+		  </div>
+		  <div class="one-fourth box"> <i class="icon-rocket special"></i>
+			<h3>Rapid Solutions</h3>
+			<p>Vestibulum id ligula porta  euismod semper. Aenean lacinia bibendum nulla sed.</p>
+		  </div>
+		  <div class="one-fourth box"> <i class="icon-beaker special"></i>
+			<h3>Magic Touch</h3>
+			<p>Fusce dapibus commodo, tortor mauris condimentum nibh, ut fermentum massa justo.</p>
+		  </div>
+		  <div class="one-fourth box last"> <i class="icon-award special"></i>
+			<h3>Award Winning</h3>
+			<p>Aenean eu leo quam. Pellente ornare sem lacinia quam venenatis vestibulum sagittis.</p>
+		  </div>
+		</div>
+	  </div>
+	  <!-- End Inner -->
+	</div>
+	<!-- End Dark Wrapper -->
+	<!-- Begin Light Wrapper -->
+	<div class="light-wrapper">
+	  <!-- Begin Inner -->
+	  <div class="inner">
+		<h1 class="aligncenter">Latest Works</h1>
+		<p class="description aligncenter">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+		<br />
+
+		<!-- Begin Portfolio -->
+		<div class="portfolio-wrapper showcase">
+		  <ul class="filter">
+			<li><a class="active" href="#" data-filter="*">All</a></li>
+			<li><a href="#" data-filter=".web">Web Design</a></li>
+			<li><a href="#" data-filter=".graphic">Graphic</a></li>
+			<li><a href="#" data-filter=".artwork">Artwork</a></li>
+			<li><a href="#" data-filter=".video">Video</a></li>
+		  </ul>
+		  <ul class="items col4">
+
+			<!-- Begin 1st Portfolio Item -->
+			<li class="item graphic web" data-callback="callPortfolioScripts();"
+				  data-detailcontent='<div class="content">
+											 <div id="myCarousel" class="carousel slide">
+												  <!-- Carousel items -->
+												  <div class="carousel-inner">
+														<div class="active item">
+															<img alt="" width="100%" src="style/images/art/ds1-1.jpg"><a href="style/images/art/ds1-1.jpg" class="fancybox-media" rel="item-1">
+															<span class="link"></span></a>
+														</div>
+														<div class="item">
+															<img alt="" width="100%" src="style/images/art/ds1-2.jpg"><a href="style/images/art/ds1-2.jpg" class="fancybox-media" rel="item-1">
+															<span class="link"></span></a>
+														</div>
+														<div class="item">
+															<img alt="" width="100%" src="style/images/art/ds1-3.jpg"><a href="style/images/art/ds1-3.jpg" class="fancybox-media" rel="item-1">
+															<span class="link"></span></a>
+														</div>
+												   </div>
+
+												  <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+												  <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
+											  </div>
+
+									   </div>
+									   <div class="item-details">
+										   <h2>Mark Heggan</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="http://markheggan.co.uk/" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#">
+			  <div class="overlay">
+				<h3>Mark Heggan Website</h3>
+				<span class="meta">Personal Website</span> </div>
+			  <img src="style/images/art/p1.jpg" alt="" /></a> </li>
+			<!-- End 1st Portfolio Item -->
+			<!-- Begin 2nd Portfolio Item -->
+			<li class="item web" data-callback="callPortfolioScripts();"
+				  data-detailcontent='<div class="content">
+											 <div id="myCarousel" class="carousel slide">
+												  <!-- Carousel items -->
+												  <div class="carousel-inner">
+														<div class="active item">
+															<img alt="" width="100%" src="style/images/art/ds2-1.jpg"><a href="style/images/art/ds2-1.jpg" class="fancybox-media" rel="item-2">
+															<span class="link"></span></a>
+														</div>
+														<div class="item">
+															<img alt="" width="100%" src="style/images/art/ds2-2.jpg"><a href="style/images/art/ds2-2.jpg" class="fancybox-media" rel="item-2">
+															<span class="link"></span></a>
+														</div>
+												   </div>
+
+												  <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+												  <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
+											  </div>
+
+									   </div>
+									   <div class="item-details">
+										   <h2>Rockable</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'> <a href="#">
+			  <div class="overlay">
+				<h3>Rockable</h3>
+				<span class="meta">Poster, Typography</span> </div>
+			  <img src="style/images/art/p2.jpg" alt="" /></a></li>
+			<!-- End 2nd Portfolio Item -->
+			<!-- Begin 3rd Portfolio Item -->
+			<li class="item artwork" data-callback="callPortfolioScripts();"
+				   data-detailcontent='<div class="content">
+												<div class="single"> <img alt="" width="100%" src="style/images/art/ds3-1.jpg"><a href="style/images/art/ds3-1.jpg" class="fancybox-media" rel="item-3"><span class="link"></span></a></div>
+
+										   </div>
+										   <div class="item-details">
+										   <h2>Movember</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+				  > <a href="#" >
+			  <div class="overlay">
+				<h3>Movember</h3>
+				<span class="meta">Poster, Typography</span> </div>
+			  <img src="style/images/art/p3.jpg" alt="" /></a></li>
+			<!-- End 3rd Portfolio Item -->
+
+			<!-- Begin 4th Portfolio Item -->
+			<li class="item graphic" data-callback="callPortfolioScripts();"
+					 data-detailcontent='<div class="content">
+												  <div class="single"> <img alt="" width="100%" src="style/images/art/ds4-1.jpg"><a href="style/images/art/ds4-1.jpg" class="fancybox-media" rel="item-4"><span class="link"></span></a></div>
+
+										   </div>
+										   <div class="item-details">
+										   <h2>El Toro!</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="http://eltoro-uk.com/" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>El Toro Website</h3>
+				<span class="meta">Band Website</span> </div>
+			  <img src="style/images/art/p4.jpg" alt="" /></a></li>
+			<!-- End 4th Portfolio Item -->
+
+			<!-- Begin 5th Portfolio Item -->
+			<li class="item artwork" data-callback="callPortfolioScripts();"
+					 data-detailcontent='<div class="content">
+											 <div id="myCarousel" class="carousel slide">
+												  <!-- Carousel items -->
+												  <div class="carousel-inner">
+														<div class="active item">
+															<img alt="" width="100%" src="style/images/art/ds5-1.jpg"><a href="style/images/art/ds5-1.jpg" class="fancybox-media" rel="item-5">
+															<span class="link"></span></a>
+														</div>
+														<div class="item">
+															<img alt="" width="100%" src="style/images/art/ds5-2.jpg"><a href="style/images/art/ds5-2.jpg" class="fancybox-media" rel="item-5">
+															<span class="link"></span></a>
+														</div>
+												   </div>
+
+												  <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+												  <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
+											  </div>
+
+									   </div>
+									   <div class="item-details">
+										   <h2>Movember</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>Movember</h3>
+				<span class="meta">Graphic Design, Typography</span> </div>
+			  <img src="style/images/art/p5.jpg" alt="" /></a></li>
+			<!-- End 5th Portfolio Item -->
+
+			<!-- Begin 6th Portfolio Item -->
+			<li class="item artwork" data-callback="callPortfolioScripts();"
+					 data-detailcontent='<div class="content">
+											 <div class="single"> <img alt="" width="100%" src="style/images/art/ds6-1.jpg"><a href="style/images/art/ds6-1.jpg" class="fancybox-media" rel="item-6"><span class="link"></span></a></div>
+
+									   </div>
+									   <div class="item-details">
+										   <h2>Hollywood Fitness</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>Hollywood Fitness</h3>
+				<span class="meta">Identity, Corporate</span> </div>
+			  <img src="style/images/art/p6.jpg" alt="" /></a></li>
+			<!-- End 6th Portfolio Item -->
+
+			<!-- Begin 7th Portfolio Item -->
+			<li class="item artwork" data-callback="callPortfolioScripts();"
+					 data-detailcontent='<div class="content">
+												  <div class="single"> <img alt="" width="100%" src="style/images/art/ds7-1.jpg"><a href="style/images/art/ds7-1.jpg" class="fancybox-media" rel="item-7"><span class="link"></span></a></div>
+
+										   </div>
+										   <div class="item-details">
+										   <h2>Back from the dead</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="http://eltoro-uk.com/" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>Back from the dead</h3>
+				<span class="meta">Branding, Texture</span> </div>
+			  <img src="style/images/art/p7.jpg" alt="" /></a></li>
+			<!-- End 7th Portfolio Item -->
+
+			<!-- Begin 8th Portfolio Item -->
+			<li class="item graphic" data-callback="callPortfolioScripts();"
+					 data-detailcontent='<div class="content">
+											 <div id="myCarousel" class="carousel slide">
+												  <!-- Carousel items -->
+												  <div class="carousel-inner">
+														<div class="active item">
+															<img alt="" width="100%" src="style/images/art/ds8-1.jpg"><a href="style/images/art/ds8-1.jpg" class="fancybox-media" rel="item-8">
+															<span class="link"></span></a>
+														</div>
+														<div class="item">
+															<img alt="" width="100%" src="style/images/art/ds8-2.jpg"><a href="style/images/art/ds8-2.jpg" class="fancybox-media" rel="item-8">
+															<span class="link"></span></a>
+														</div>
+												   </div>
+
+												  <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+												  <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
+											  </div>
+
+									   </div>
+									   <div class="item-details">
+										   <h2>Seafood Restaurant</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>Seafood Restaurant</h3>
+				<span class="meta">Identity, Corporate</span> </div>
+			  <img src="style/images/art/p8.jpg" alt="" /></a></li>
+			<!-- End 8th Portfolio Item -->
+
+			<!-- Begin 9th Portfolio Item -->
+			<li class="item graphic" data-callback="callPortfolioScripts();"
+					 data-detailcontent='<div class="content">
+											 <div id="myCarousel" class="carousel slide">
+												  <!-- Carousel items -->
+												  <div class="carousel-inner">
+														<div class="active item">
+															<img alt="" width="100%" src="style/images/art/ds9-1.jpg"><a href="style/images/art/ds9-1.jpg" class="fancybox-media" rel="item-8">
+															<span class="link"></span></a>
+														</div>
+														<div class="item">
+															<img alt="" width="100%" src="style/images/art/ds9-2.jpg"><a href="style/images/art/ds9-2.jpg" class="fancybox-media" rel="item-8">
+															<span class="link"></span></a>
+														</div>
+												   </div>
+
+												  <a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
+												  <a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
+											  </div>
+
+									   </div>
+									   <div class="item-details">
+										   <h2>+ Design</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>+ Design</h3>
+				<span class="meta">Brand, Identity</span> </div>
+			  <img src="style/images/art/p9.jpg" alt="" /></a></li>
+			<!-- End 9th Portfolio Item -->
+			<!-- Begin 10th Portfolio Item -->
+			<li class="item video" data-callback="callPortfolioScripts();"
+					 data-detailcontent='<div class="content">
+												<div class="single vid"><iframe src="http://player.vimeo.com/video/6757600?title=0&amp;byline=0&amp;portrait=0" width="604" height="340" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+
+										   </div>
+										   <div class="item-details">
+										   <h2>26 Mixes</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>26 Mixes</h3>
+				<span class="meta">Identity, Website</span> </div>
+			  <img src="style/images/art/p10.jpg" alt="" /></a></li>
+			<!-- End 10th Portfolio Item -->
+
+			<!-- Begin 11th Portfolio Item -->
+			<li class="item web" data-callback="callPortfolioScripts();"
+			   data-detailcontent='<div class="content">
+												<div class="single"> <img alt="" width="100%" src="style/images/art/ds11-1.jpg"><a href="style/images/art/ds11-1.jpg" class="fancybox-media" rel="item-11"><span class="link"></span></a></div>
+
+										   </div>
+										   <div class="item-details">
+										   <h2>Photographs</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>Photographs</h3>
+				<span class="meta">Website, Texture</span> </div>
+			  <img src="style/images/art/p11.jpg" alt="" /></a></li>
+			<!-- End 11th Portfolio Item -->
+
+			<!-- Begin 12th Portfolio Item -->
+			<li class="item video" data-callback="callPortfolioScripts();" data-detailcontent='<div class="content">
+												<div class="single vid"><iframe width="560" height="315" src="http://www.youtube.com/embed/zlbE1Kdfz6E?rel=0;showinfo=0" frameborder="0" allowfullscreen></iframe></div>
+
+										   </div>
+										   <div class="item-details">
+										   <h2>Beet Cake</h2>
+
+										   <ul class="item-info">
+											<li><span class="lite1">Date:</span> 02 January 2012</li>
+											<li><span class="lite1">Categories:</span> JavaScript, CSS, HTML</li>
+											<li><span class="lite1">Client:</span> Sit Commodo Sollicitudin</li>
+										  </ul>
+										   <p>Tonec id elit non mi porta gravida at eget metus, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p> <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat cupidatat.</p>
+
+										  <a href="#" class="button">Launch Site</a>
+									   </div>
+									   <div class="clear"></div>'
+			  > <a href="#" >
+			  <div class="overlay">
+				<h3>Beet Cake</h3>
+				<span class="meta">Video, Conceptual</span> </div>
+			  <img src="style/images/art/p12.jpg" alt="" /></a></li>
+			<!-- End 12th Portfolio Item -->
+		  </ul>
+		</div>
+		<!-- End Portfolio -->
+
+	  </div>
+	  <!-- End Inner -->
+	</div>
+	<!-- End Light Wrapper -->
+	<!-- Begin Dark Wrapper -->
+	<div class="dark-wrapper">
+	  <!-- Begin Inner -->
+	  <div class="inner">
+		<div id="twitter-wrapper">
+		  <div id="twitter"></div>
+		</div>
+	  </div>
+	  <!-- End Inner -->
+	</div>
+	<!-- End Dark Wrapper -->
+
+<?php get_footer(); ?>
