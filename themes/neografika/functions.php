@@ -1,87 +1,99 @@
 <?php
 
-// ELEMENTOS DEL DASHBOARD ///////////////////////////////////////////////////////////
+// REMOVE ADMIN BAR FOR NON ADMINS ///////////////////////////////////////////////////
 
-	add_action( 'admin_menu', function(){
-		global $menu;
-		global $submenu;
-		unset( $menu[75] ); // quitar tools
-		$menu[5][0] = 'Productos';
-		$submenu['edit.php'][5][0] = 'Productos';
-		$submenu['edit.php'][10][0] = 'Add Productos';
-		$submenu['edit.php'][16][0] = 'News Tags';
-		echo '';
+	add_filter('show_admin_bar' ,function($content){
+		return ( current_user_can("administrator") ) ? $content : false;
 	});
 
-	add_action('init', function(){
-		global $wp_post_types;
-		$labels = &$wp_post_types['post']->labels;
-		$labels->name = 'Productos';
-		$labels->singular_name = 'Productos';
-		$labels->add_new = 'Nuevo Producto';
-		$labels->add_new_item = 'Nuevo Producto';
-		$labels->edit_item = 'Editar Producto';
-		$labels->new_item = 'Producto';
-		$labels->view_item = 'Ver Producto';
-		$labels->search_items = 'Buscar Producto';
-		$labels->not_found = 'No se encontraron productos';
-		$labels->not_found_in_trash = 'No se encontraron productos';
-	});
+// METABOXES AND TAXONOMIES //////////////////////////////////////////////////////////
 
+	require_once('includes/metaboxes.php');
 
+// FRONT END SCRIPTS AND STYLES //////////////////////////////////////////////////////
 
-// QUITAR WIDGETS DEL DASHBOARD //////////////////////////////////////////////////////
-
-	add_action('admin_menu', function(){
-		//remove_meta_box('dashboard_recent_comments', 'dashboard', 'core');
-		//remove_meta_box('dashboard_incoming_links', 'dashboard', 'core');
-		remove_meta_box('dashboard_plugins', 'dashboard', 'core');
-		//remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
-		remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core');
-		remove_meta_box('dashboard_secondary', 'dashboard', 'core');
-	});
-
-// CAMBIAR EL CONTENIDO DEL FOOTER EN EL DASHBOARD ///////////////////////////////////
-
-	add_filter('admin_footer_text', function() {
-		echo 'Creado por <a href="http://tangentlabs.mx">tangentlabs</a>. Powered by <a href="http://www.wordpress.org">WordPress</a>';
-	});
-
-// ENQUEUE JAVASCRIPT AND CSS ////////////////////////////////////////////////////////
-/*
-	// Definir el paths a los directorios de javascript y css
+	// path a los directorios de javascript y css
 	define( 'JSPATH', get_template_directory_uri() . '/js/' );
 	define( 'CSSPATH', get_template_directory_uri() . '/css/' );
+	define( 'THEMEPATH', get_template_directory_uri() . '/' );
 
-	// enqueue front end javascript y css
-	add_action('wp_enqueue_scripts', function(){
 
-		// style.css
-		wp_enqueue_style('style', get_stylesheet_uri());
+	// front end styles and scripts
+	add_action( 'wp_enqueue_scripts', function(){
 
-		// modernizr
-		wp_register_script( 'modernizr', JSPATH.'modernizr-2.6.2.min.js' );
-		wp_enqueue_script('modernizr');
+		if(is_admin()){
+			wp_enqueue_script('admin-js', get_template_directory_uri().'/admin/js/admin.js',  array('jquery'), false, true );
+			wp_enqueue_style('admin-css', get_template_directory_uri().'/admin/css/admin.css');
+		}else{
+			// scripts
+			wp_enqueue_script('ddsmoothmenu', JSPATH.'ddsmoothmenu.js', '', false, false );
+			wp_enqueue_script('isotope', JSPATH.'jquery.isotope.min.js', array('jquery'), false, false );
+			wp_enqueue_script('selectnav', JSPATH.'selectnav.js', '', false, false );
+			wp_enqueue_script('slickforms', JSPATH.'jquery.slickforms.js', array('jquery'), false, false );
+			wp_enqueue_script('easytabs', JSPATH.'jquery.easytabs.min.js', array('jquery'), false, false );
+			wp_enqueue_script('fitvids', JSPATH.'jquery.fitvids.js', array('jquery'), false, false );
+			wp_enqueue_script('fancybox-pack', JSPATH.'jquery.fancybox.pack.js', array('jquery'), false, false );
+			wp_enqueue_script('fancybox-thumbs', JSPATH.'fancybox/helpers/jquery.fancybox-thumbs.js', '', false, false );
+			wp_enqueue_script('fancybox-media', JSPATH.'fancybox/helpers/jquery.fancybox-media.js', '', false, false );
+			wp_enqueue_script('themepunch', JSPATH.'jquery.themepunch.plugins.min.js', array('jquery'), false, false );
+			wp_enqueue_script('revolution', JSPATH.'jquery.themepunch.revolution.min.js', array('jquery'), false, false );
+			wp_enqueue_script('touchcarousel', JSPATH.'jquery.touchcarousel-1.2.min.js', array('jquery'), false, false );
+			wp_enqueue_script('twitter', JSPATH.'twitter.min.js', '', false, false );
+			wp_enqueue_script('boostrapslider', JSPATH.'boostrapslider.js', '', false, false );
+			wp_enqueue_script('scripts', JSPATH.'scripts.js',  array('jquery'), false, true );
 
-		// functions
-		wp_register_script( 'plugins', JSPATH.'plugins.min.js', array('jquery'), false, true);
-		wp_enqueue_script('plugins');
-
-		// functions
-		wp_register_script( 'functions', JSPATH.'functions.min.js', array('jquery', 'plugins'), false, true);
-		wp_enqueue_script('functions');
-		wp_localize_script('functions', 'ajax_url', get_bloginfo('wpurl').'/wp-admin/admin-ajax.php');
-		wp_localize_script('functions', 'main_url', site_url('/main/'));
-		wp_localize_script('functions', 'theme_url', get_bloginfo('template_url'));
-		wp_localize_script('functions', 'logout_url', wp_logout_url());
-		wp_localize_script('functions', 'tiene_barra', mq_usuario_tiene_barra(wp_get_current_user()->ID));
-
-		// bootstrap
-		wp_enqueue_script('bootstrap-js' , JSPATH.'bootstrap.min.js', array('jquery'), false, true);
+			// styles
+			wp_enqueue_style('style', get_stylesheet_uri());
+			wp_enqueue_style('color-red', CSSPATH.'color/red.css');
+			wp_enqueue_style('media-queries', CSSPATH.'media-queries.css');
+			wp_enqueue_style('fancybox', JSPATH.'fancybox/jquery.fancybox.css');
+			wp_enqueue_style('fancybox-helpers', JSPATH.'fancybox/helpers/jquery.fancybox-thumbs.css');
+			wp_enqueue_style('google-fonts', 'http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic');
+			wp_enqueue_style('fontello-fonts', THEMEPATH .'fonts/fontello.css');
+		}
 	});
 
-	add_action('admin_init', function(){
-		wp_enqueue_script('custom-js' , get_template_directory_uri().'/admin/js/custom.min.js', array('jquery'), false, true);
-		wp_localize_script('custom-js', 'ajax_url', get_bloginfo('wpurl').'/wp-admin/admin-ajax.php');
+// POST THUMBNAILS SUPPORT ///////////////////////////////////////////////////////////
+
+	if(function_exists( 'add_theme_support' )){
+		add_theme_support( 'post-thumbnails' );
+	}
+
+	if(function_exists( 'add_image_size' )){
+		add_image_size( 'propiedad-thumb', 270, 220, true );
+		add_image_size( 'propiedad-thumb', 770, 500, true );
+	}
+
+// CUSTOM POST TYPES /////////////////////////////////////////////////////////////////
+
+	add_action('init', function(){
+		// post type productos
+		$labels = array(
+			'name'          => 'Productos',
+			'singular_name' => 'Producto',
+			'add_new'       => 'Add Producto',
+			'add_new_item'  => 'Add New Producto',
+			'edit_item'     => 'Edit Producto',
+			'new_item'      => 'New Producto',
+			'all_items'     => 'All Productos',
+			'view_item'     => 'View Producto',
+			'search_items'  => 'Search Producto',
+			'not_found'     => 'No producto found',
+			'menu_name'     => 'Productos'
+		);
+		$args = array(
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'producto' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array( 'title', 'editor', 'thumbnail' )
+		);
+		register_post_type('producto', $args);
 	});
-*/

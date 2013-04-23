@@ -1,0 +1,11 @@
+/* styles for custom_metabox elements */
+input[type="text"] { width:250px; height:25px; }
+input[type="checkbox"], input[type="radio"] { width: 18px; height: 18px; margin-top: -2px; }
+
+div.my_meta_control{ padding: 10px auto; }
+div.tabs-panel label{ font-size: 12px; }
+
+div.input-group{ display: block; padding: 4px; }
+div.input-group label { display: block; float: left; width: 120px; font-size: 12px; padding-top: 6px; }
+
+#google_help  { font-size: 14px; color: #858585; margin-left: 5px; cursor: pointer; font-size: 11px; }

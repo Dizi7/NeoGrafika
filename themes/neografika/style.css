@@ -1,10 +1,14 @@
 /*
-Theme Name: NeoGrafika
-Theme URI: http://neografika.mx
-Author: tangentlabs
+Theme Name: neografika
+Theme URI: http://tangentlabs.mx
+Author: Los Maquiladores
 Author URI: http://tangentlabs.mx
+Description: Tema de WordPress Personalizado para NeoGrafika
 Version: 1.0
+License: DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
+License URI: http://www.wtfpl.net/about/
 */
+
 /*-----------------------------------------------------------------------------------*/
 /*	RESET
 /*-----------------------------------------------------------------------------------*/
@@ -570,7 +574,7 @@ p.description {
     display: none;
     width: 280px;
     margin: 0 auto;
-    background: transparent url(style/images/dropdown-arrow.png) no-repeat right center;
+    background: transparent url(images/dropdown-arrow.png) no-repeat right center;
     border-radius: 0;
     border: 0;
     background-color: #ebebeb;
@@ -582,7 +586,7 @@ p.description {
 }
 @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (min-device-pixel-ratio: 1.5) {
 	.selectnav {
-	    background-image: url(style/images/dropdown-arrow@2x.png)
+	    background-image: url(images/dropdown-arrow@2x.png)
 	}
 }
 /*-----------------------------------------------------------------------------------*/
@@ -2023,7 +2027,7 @@ media_tag_2 {media_subcode:2}
 .tp-bannertimer {
     width: 100%;
     height: 10px;
-    background: url(style/images/timer.png);
+    background: url(images/timer.png);
     position: absolute;
     z-index: 200;
 }
@@ -2057,7 +2061,7 @@ media_tag_3 {media_subcode:3}
     height: 10000px;
 }
 .tp-loader {
-    background: url(style/images/loading.gif) no-repeat;
+    background: url(images/loading.gif) no-repeat;
     background-color: #2a2a2a;
     margin: -15px -15px;
     top: 50%;
@@ -2069,7 +2073,7 @@ media_tag_3 {media_subcode:3}
     background-size: 30px 30px;
 }
 .top-wrapper .tp-loader {
-    background-image: url(style/images/loading-dark.gif)
+    background-image: url(images/loading-dark.gif)
 }
 media_tag_4 {media_subcode:4}
 /*-----------------------------------------------------------------------------------*/
@@ -2135,10 +2139,10 @@ media_tag_4 {media_subcode:4}
 }
 /* IE and Opera use "move", FF uses -moz-grab */
 .touchcarousel .grab-cursor {
-    cursor: url(style/images/grab.png) 8 8, move
+    cursor: url(images/grab.png) 8 8, move
 }
 .touchcarousel .grabbing-cursor {
-    cursor: url(style/images/grabbing.png) 8 8, move
+    cursor: url(images/grabbing.png) 8 8, move
 }
 /* Cursor that used when mouse drag is disabled */
 .touchcarousel .auto-cursor {
@@ -2348,7 +2352,7 @@ media_tag_4 {media_subcode:4}
 #fancybox-loading div {
 	width: 24px !important;
 	height: 24px !important;
-	background-image: url(style/images/fancy-loading.gif) !important;
+	background-image: url(images/fancy-loading.gif) !important;
 }
 media_tag_5 {media_subcode:5}
 /*-----------------------------------------------------------------------------------*/
@@ -2768,7 +2772,7 @@ media_tag_5 {media_subcode:5}
 /*	BOX LAYOUT
 /*-----------------------------------------------------------------------------------*/
 .box-layout {
-	background: transparent url(style/images/bg/bg1.jpg) repeat fixed;
+	background: transparent url(images/bg/bg1.jpg) repeat fixed;
 	padding: 60px 0;
 }
 .box-layout .body-wrapper {
