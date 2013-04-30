@@ -46,7 +46,6 @@
 		<?php
 	}
 
-
 // SAVE METABOXES DATA ///////////////////////////////////////////////////////////////
 
 	add_action('save_post', function($post_id){
@@ -73,12 +72,6 @@
 			update_post_meta($post_id, '_fotogaleria_meta', $_POST['_fotogaleria_meta']);
 		}else{
 			delete_post_meta($post_id, '_fotogaleria_meta');
-		}
-
-		// Fotogalería: _fotogaleria[]
-		if( ! empty($_FILES['_fotogaleria_meta']) ){
-
-
 		}
 
 	});
