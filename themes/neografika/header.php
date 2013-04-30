@@ -48,7 +48,7 @@
 				</header>
 
 				<?php if( is_home() ){
-					get_template_part('template_parts/header/header', 'banner');
+					get_template_part('templates/header/header', 'banner');
 				} ?>
 
 			</div><!-- End Top Wrapper -->

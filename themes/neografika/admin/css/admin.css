@@ -1,6 +1,6 @@
 /* styles for custom_metabox elements */
-input[type="text"] { width:250px; height:25px; }
-input[type="checkbox"], input[type="radio"] { width: 18px; height: 18px; margin-top: -2px; }
+/*input[type="text"] { width:250px; height:25px; }*/
+input[type="checkbox"], input[type="radio"] { width: 15px; height: 15px; }
 
 div.my_meta_control{ padding: 10px auto; }
 div.tabs-panel label{ font-size: 12px; }
@@ -9,3 +9,14 @@ div.input-group{ display: block; padding: 4px; }
 div.input-group label { display: block; float: left; width: 120px; font-size: 12px; padding-top: 6px; }
 
 #google_help  { font-size: 14px; color: #858585; margin-left: 5px; cursor: pointer; font-size: 11px; }
+
+.fotogaleria{
+	height: 200px;
+	margin-bottom: 20px;
+	background: white;
+	border-color: #dfdfdf;
+	border-width: 1px;
+	border-style: solid;
+	-webkit-border-radius: 3px;
+			border-radius: 3px;
+}

@@ -68,8 +68,8 @@
 	});
 
 	add_action( 'admin_init', function(){
-		wp_enqueue_script('admin-js', get_template_directory_uri().'/admin/js/ng_admin.js',  array('jquery'), false, true );
-		wp_enqueue_style('admin-css', get_template_directory_uri().'/admin/css/ng_admin.css');
+		wp_enqueue_script('admin-js', get_template_directory_uri().'/admin/js/admin.js',  array('jquery'), false, true );
+		wp_enqueue_style('admin-css', get_template_directory_uri().'/admin/css/admin.css');
 	});
 
 // POST THUMBNAILS SUPPORT ///////////////////////////////////////////////////////////

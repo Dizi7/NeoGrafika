@@ -7,14 +7,14 @@
 		$labels = array(
 			'name'          => 'Productos',
 			'singular_name' => 'Producto',
-			'add_new'       => 'Add Producto',
-			'add_new_item'  => 'Add New Producto',
-			'edit_item'     => 'Edit Producto',
-			'new_item'      => 'New Producto',
-			'all_items'     => 'All Productos',
-			'view_item'     => 'View Producto',
-			'search_items'  => 'Search Producto',
-			'not_found'     => 'No producto found',
+			'add_new'       => 'Nuevo Producto',
+			'add_new_item'  => 'Nuevo Producto',
+			'edit_item'     => 'Editar Producto',
+			'new_item'      => 'Nuevo Producto',
+			'all_items'     => 'Todos',
+			'view_item'     => 'Ver Producto',
+			'search_items'  => 'Buscar Producto',
+			'not_found'     => 'No se encontro',
 			'menu_name'     => 'Productos'
 		);
 		$args = array(
@@ -29,6 +29,7 @@
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => null,
+			'taxonomies'         => array('category'),
 			'supports'           => array( 'title', 'editor', 'thumbnail' )
 		);
 		register_post_type('producto', $args);
@@ -53,3 +54,4 @@
 			echo "<button class='button save-precio' data-post='$post_id'>Guardar</button>";
 		}
 	}
+
