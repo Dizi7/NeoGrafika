@@ -3,6 +3,10 @@
 
 	$(function(){
 
+	// PERMITE GUARDAR INPUT TYPE FILE - METABOXES /////////////////////////
+
+		$('form[id="post"]').attr('enctype', 'multipart/form-data');
+
 	// DISPLAY SELECTED IMAGE REAL TIME ////////////////////////////////////
 
 		$('.input-img').on('change', function(){
