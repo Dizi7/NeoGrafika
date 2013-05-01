@@ -82,3 +82,14 @@
 		add_image_size( 'propiedad-thumb', 270, 220, true );
 		add_image_size( 'propiedad-thumb', 770, 500, true );
 	}
+
+function scrub_get_attachment_images(){
+	global $wpdb;
+	return $wpdb->get_results(
+		"SELECT ID, meta_value FROM wp_posts
+			INNER JOIN wp_postmeta
+				ON ID = post_id
+					AND meta_key    = '_wp_attached_file'
+					AND post_parent = 25;", OBJECT
+	);
+}
