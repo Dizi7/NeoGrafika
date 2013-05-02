@@ -14,11 +14,38 @@
 			mq_display_file(this, container);
 		});
 
+	// ELIMINAR UNA IMAGEN DE PRODUCTO /////////////////////////////////////
+
+		$('.eliminar-img').live('click', function(e){
+			e.preventDefault();
+
+			var $this      = $(this),
+				container  = $this.siblings('.fotogaleria'),
+				file_input = $this.siblings('.input-img'),
+				post_id    = $this.data('post_id');
+
+			if(post_id){
+				delete_attachment_by_id(post_id);
+			}
+
+			mq_reset_file_input(file_input);
+			container.attr('style', 'background: white');
+		});
+
+	// AGREGAR NUEVO CAMPO DE IMAGEN ///////////////////////////////////////
+
+		$('#image-add-toggle').live('click', function(e){
+			e.preventDefault();
+			//nuevo campo de imagen
+		});
+
+	// SCRUB HELPER FUNCTIONS  /////////////////////////////////////////////
+
 		/**
-		 * Despliega la imagen selecionada en el container indicado
 		 *
-		 * recibe: input[type='file']
-		 * recibe: container jQuery para desplegar la imagen
+		 * Despliega la imagen selecionada en el container indicado
+		 * @param: input[type='file']
+		 * @param: container jQuery para desplegar la imagen
 		 *
 		 **/
 		function mq_display_file(input, container){
@@ -29,16 +56,6 @@
 			reader.readAsDataURL(input.files[0]);
 		}
 
-	// ELIMINAR LA IMAGEN DEL CONTAINER ////////////////////////////////////
-
-		$('.eliminar-img').on('click', function(e){
-			e.preventDefault();
-			var container  = $(this).siblings('.fotogaleria'),
-				file_input = $(this).siblings('.input-img');
-
-			mq_reset_file_input(file_input);
-			container.attr('style', 'background: white');
-		});
 
 		/**
 		 *
@@ -50,6 +67,27 @@
 			input.replaceWith( replacement );
 		}
 
+
+		/**
+		 *
+		 * Ajax function para eliminar attachments por id
+		 * @param post_id
+		 *
+		 **/
+		function delete_attachment_by_id(post_id){
+			jQuery.ajax({
+				type: 'POST',
+				url: ajax_url,
+				data: {
+					post_id: post_id,
+					action: 'delete_attachment',
+				},
+				dataType: 'json'
+			})
+			.done(function(data, textStatus, jqXHR){
+				console.log(data);
+			});
+		}
 
 	});
 

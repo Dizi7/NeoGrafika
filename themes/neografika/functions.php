@@ -69,6 +69,7 @@
 
 	add_action( 'admin_init', function(){
 		wp_enqueue_script('admin-js', get_template_directory_uri().'/admin/js/admin.js',  array('jquery'), false, true );
+		wp_localize_script('admin-js', 'ajax_url',  get_bloginfo('wpurl').'/wp-admin/admin-ajax.php');
 		wp_enqueue_style('admin-css', get_template_directory_uri().'/admin/css/admin.css');
 	});
 
@@ -83,13 +84,33 @@
 		add_image_size( 'propiedad-thumb', 770, 500, true );
 	}
 
-function scrub_get_attachment_images(){
-	global $wpdb;
-	return $wpdb->get_results(
-		"SELECT ID, meta_value FROM wp_posts
-			INNER JOIN wp_postmeta
-				ON ID = post_id
-					AND meta_key    = '_wp_attached_file'
-					AND post_parent = 25;", OBJECT
-	);
-}
+	function scrub_get_attachment_images($post_id){
+		global $wpdb;
+		return $wpdb->get_results(
+			"SELECT ID, meta_value FROM wp_posts
+				INNER JOIN wp_postmeta
+					ON ID = post_id
+						AND meta_key    = '_wp_attached_file'
+						AND post_parent = '$post_id';", OBJECT
+		);
+	}
+
+	/**
+	 *
+	 * Ajax callback function para eliminar attachments
+	 *
+	 * @param post_id
+	 * @return false on failure, post data on success
+	 *
+	 **/
+	function delete_attachment(){
+		$result = wp_delete_attachment( $_POST['post_id'], true );
+		file_put_contents(
+			'/var/www/neografika/wp-content/themes/neografika/php.log',
+			var_export( $result, true )
+		);
+		echo json_encode($result);
+		exit;
+	}
+	add_action('wp_ajax_delete_attachment', 'delete_attachment');
+	add_action('wp_ajax_nopriv_delete_attachment', 'delete_attachment');

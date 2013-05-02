@@ -26,33 +26,32 @@
 		echo "<div class='inside fotogaleria_container'>";
 		echo "<p><input type='checkbox' name='_fotogaleria_meta' $checked /> Incluir fotogaleria</p>";
 
-		if( $images = scrub_get_attachment_images() ){
-
+		if( $images = scrub_get_attachment_images($post->ID) ){
 			foreach( $images as $image ) {
 				display_image_field( $image );
 			}
 		}else{
 			?>
-			<div class="inside fotogaleria_container">
-				<p><input type='checkbox' name='_fotogaleria_meta' <?= $checked ?>/> Incluir fotogaleria</p>
-				<div>
-					<input type="file" class="input-img" name="_fotogaleria[]">
-					<input type="submit" class="button eliminar-img" value="Eliminar">
-					<div class="fotogaleria"></div>
-				</div>
-			</div><!-- inside -->
+			<div>
+				<input type="file" class="input-img" name="_fotogaleria[]">
+				<input type="submit" class="button eliminar-img" data-post_id="" value="Eliminar">
+				<div class="fotogaleria"></div>
+			</div>
+			<h4 id="image-add-toggle">
+				<a href="#image-add">+ Añadir nueva imagen</a>
+			</h4>
 			<?php
 		}
 		echo '</div><!-- inside -->';
 	}
 
-	function display_image_field( $image = false ){
+	function display_image_field( $image ){
 		$uploads_dir = wp_upload_dir();
 		echo<<<IMAGE
 			<div>
 				<input type="file" class="input-img" name="_fotogaleria[]">
-				<input type="submit" class="button eliminar-img" value="Eliminar">
-				<div class="fotogaleria" data-post_id="$image->ID"
+				<input type="submit" class="button eliminar-img" data-post_id="$image->ID" value="Eliminar">
+				<div class="fotogaleria"
 					style="background: url('{$uploads_dir['baseurl']}/$image->meta_value') no-repeat center center ">
 				</div>
 			</div>
