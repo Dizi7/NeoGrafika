@@ -36,7 +36,14 @@
 
 		$('#image-add-toggle').live('click', function(e){
 			e.preventDefault();
-			//nuevo campo de imagen
+
+			$(this).before(
+				$('<div></div>')
+					.append('<input type="file" class="input-img" name="_fotogaleria[]">')
+					.append('<input type="submit" class="button eliminar-img" data-post_id="" value="Eliminar">')
+					.append('<div class="fotogaleria"></div>')
+			);
+
 		});
 
 	// SCRUB HELPER FUNCTIONS  /////////////////////////////////////////////

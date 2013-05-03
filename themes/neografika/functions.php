@@ -81,7 +81,6 @@
 
 	if(function_exists( 'add_image_size' )){
 		add_image_size( 'propiedad-thumb', 270, 220, true );
-		add_image_size( 'propiedad-thumb', 770, 500, true );
 	}
 
 	function scrub_get_attachment_images($post_id){
