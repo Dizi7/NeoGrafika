@@ -5,16 +5,32 @@
 	add_action('add_meta_boxes', function(){
 		// Productos
 		add_meta_box('producto_precio_meta', 'Precio', 'producto_meta_precio_setup', 'producto', 'side', 'low');
+		add_meta_box('producto_sku_meta', 'Identificador ', 'producto_meta_sku_setup', 'producto', 'side', 'low');
+		add_meta_box('producto_medidas_meta', 'Medidas ', 'producto_meta_medidas_setup', 'producto', 'side', 'low');
 		add_meta_box('producto_fotogaleria_meta', 'Fotogalería', 'producto_meta_fotogaleria_setup', 'producto', 'normal', 'low');
 	});
 
-	// Precio Producto
+	// Producto: Precio
 	function producto_meta_precio_setup($post){
-		$precio = get_post_meta($post->ID, '_precio_meta', true);
-		echo "<input type='text' class='widefat' id='precio' name='_precio_meta' value='$precio'/>";
+		$precio = get_post_meta($post->ID, '_unit_price', true);
+		echo "<input type='number' class='widefat' id='_unit_price' name='_unit_price' value='$precio'/>";
 	}
 
-	// Incluir foto galeria
+	// Producto: Stock Keeping Unit (Identificador)
+	function producto_meta_sku_setup($post){
+		$sku = get_post_meta($post->ID, '_stock_keeping_unit', true);
+		wp_nonce_field(__FILE__, '_stock_keeping_unit_nonce');
+		echo "<input type='text' class='widefat' id='sku' name='_stock_keeping_unit' value='$sku'/>";
+	}
+
+	// Producto: Stock Keeping Unit (Identificador)
+	function producto_meta_medidas_setup($post){
+		$size = get_post_meta($post->ID, '_product_size', true);
+		wp_nonce_field(__FILE__, '_product_size_nonce');
+		echo "<input type='text' class='widefat' id='size' name='_product_size' value='$size'/>";
+	}
+
+	// Producto: Incluir foto galeria
 	function producto_meta_fotogaleria_setup($post){
 
 		wp_nonce_field(__FILE__, '_fotogaleria_meta_nonce');
@@ -29,9 +45,11 @@
 		if( $images = scrub_get_attachment_images($post->ID) ){
 			foreach( $images as $image ) {
 				display_image_field( $image );
-			}
-		}else{
-			?>
+			} ?>
+			<h4 id="image-add-toggle">
+				<a href="#image-add">+ Añadir nueva imagen</a>
+			</h4>
+		<?php } else { ?>
 			<div>
 				<input type="file" class="input-img" name="_fotogaleria[]">
 				<input type="submit" class="button eliminar-img" data-post_id="" value="Eliminar">
@@ -52,7 +70,7 @@
 				<input type="file" class="input-img" name="_fotogaleria[]">
 				<input type="submit" class="button eliminar-img" data-post_id="$image->ID" value="Eliminar">
 				<div class="fotogaleria"
-					style="background: url('{$uploads_dir['baseurl']}/$image->meta_value') no-repeat center center ">
+					style="background: url('{$uploads_dir['baseurl']}/$image->dir') no-repeat center center ">
 				</div>
 			</div>
 IMAGE;
@@ -66,20 +84,32 @@ IMAGE;
 			return $post_id;
 		}
 
-		if( !wp_verify_nonce($_POST['_fotogaleria_meta_nonce'], __FILE__)){
-			return $post_id;
-		}
-
 		if(defined('DOING_AUTOSAVE') and DOING_AUTOSAVE){
 			return $post_id;
 		}
 
-		// Fotogalería: _precio_meta
-		if(isset($_POST['_precio_meta'])){
-			update_post_meta($post_id, '_precio_meta', $_POST['_precio_meta']);
+		// Productos: _unit_price
+		if(isset($_POST['_unit_price'])){
+			update_post_meta($post_id, '_unit_price', $_POST['_unit_price']);
 		}
 
-		// Fotogalería: _fotogaleria_meta
+		// Productos: _stock_keeping_unit
+		if(isset($_POST['_stock_keeping_unit'])){
+			if( !wp_verify_nonce($_POST['_stock_keeping_unit_nonce'], __FILE__)){
+				return $post_id;
+			}
+			update_post_meta($post_id, '_stock_keeping_unit', $_POST['_stock_keeping_unit']);
+		}
+
+		// Productos: _product_size
+		if(isset($_POST['_product_size'])){
+			if( !wp_verify_nonce($_POST['_product_size_nonce'], __FILE__)){
+				return $post_id;
+			}
+			update_post_meta($post_id, '_product_size', $_POST['_product_size']);
+		}
+
+		// Productos - Fotogalería: _fotogaleria_meta
 		if(isset($_POST['_fotogaleria_meta'])){
 			update_post_meta($post_id, '_fotogaleria_meta', $_POST['_fotogaleria_meta']);
 		}else{
@@ -87,6 +117,10 @@ IMAGE;
 		}
 
 		if(!empty($_FILES) and isset($_FILES['_fotogaleria'])){
+
+			if( !wp_verify_nonce($_POST['_fotogaleria_meta_nonce'], __FILE__)){
+				return $post_id;
+			}
 
 			$uploaded_files = $_FILES['_fotogaleria'];
 

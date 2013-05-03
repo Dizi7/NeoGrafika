@@ -710,7 +710,8 @@
 	/*	TWITTER
 	/*-----------------------------------------------------------------------------------*/
 	getTwitters('twitter', {
-	    id: 'elemisdesign',
+	    id: 'ChiclickMx',
+	    id: twitter_username,
 	    count: 1,
 	    enableLinks: true,
 	    ignoreReplies: false,
