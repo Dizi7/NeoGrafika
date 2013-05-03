@@ -46,6 +46,8 @@
 
 		});
 
+		$('#settings-contacto-message').hide();
+
 	// SCRUB HELPER FUNCTIONS  /////////////////////////////////////////////
 
 		/**

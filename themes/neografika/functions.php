@@ -8,7 +8,7 @@
 
 // QUITAR ELEMENTOS DEL MENU DENTRO DEL DASHBOARD ////////////////////////////////////
 
-	add_action('admin_menu', function() {
+/*	add_action('admin_menu', function() {
 		// quitar estos elementos
 		$remove = array(__('Pages'),__('Posts'),__('Tools'),__('Comments'),__('Appearance'));
 
@@ -22,7 +22,7 @@
 				unset( $menu[key($menu)] );
 			}
 		}
-	});
+	});*/
 
 // POST TYPES, METABOXES AND TAXONOMIES //////////////////////////////////////////////
 
@@ -84,6 +84,22 @@
 	}
 
 
+// ADD EXTRA CONFIGURATIONS TO ADMIN MENU ////////////////////////////////////////////
+
+	add_action( 'admin_menu', function(){
+		$remove = array(__('Pages'),__('Posts'),__('Tools'),__('Comments'),__('Appearance'));
+		remove_dashboard_menus($remove);
+
+		//add_submenu_page( parent_slug, page_title, menu_title, capability, menu_slug, function )
+		add_submenu_page('options-general.php', 'datos-contacto', 'Contacto', 'manage_options', 'datos-contacto', 'contact_settings_html');
+	});
+
+	function contact_settings_html(){
+		require_once 'inc/datos-contacto.php';
+	}
+
+// HELPER FUNCTIONS AND CLASSES //////////////////////////////////////////////////////
+
 	/**
 	 *
 	 * Regresa las imagenes que estan ligadas al post_id
@@ -114,10 +130,6 @@
 	 **/
 	function delete_attachment(){
 		$result = wp_delete_attachment( $_POST['post_id'], true );
-		file_put_contents(
-			'/var/www/neografika/wp-content/themes/neografika/php.log',
-			var_export( $result, true )
-		);
 		echo json_encode($result);
 		exit;
 	}
@@ -151,4 +163,20 @@
 					INNER JOIN wp_terms AS t ON tt.term_id = t.term_id
 						WHERE post_status = 'publish';", OBJECT
 		);
+	}
+
+	/**
+	 * Quita elementos del sidebar dentro del dashboard
+	 *
+	 * @param  remove : (Array) Arreglo con los elementos que se omitiran
+	 *
+	 **/
+	function remove_dashboard_menus($remove){
+			global $menu; end($menu);
+		while(prev($menu)){
+			$value = explode(' ',$menu[key($menu)][0]);
+			if(in_array($value[0] != NULL ? $value[0] : '' , $remove)){
+				unset( $menu[key($menu)] );
+			}
+		}
 	}
