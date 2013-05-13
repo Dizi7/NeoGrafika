@@ -42,7 +42,7 @@
 				<div class="sidebox">
 					<h3>Dirección</h3>
 					<p>Arte popular mexicano.</p>
-					<i class="icon-location contact"></i> Mexico Distrito Federal<br />
+					<i class="icon-location contact"></i>  México, Distrito Federal<br />
 					<i class="icon-phone contact"></i> <a href="tel://6176101405">55-4095-8596</a><br />
 					<i class="icon-mail contact"></i> <a href="mailto:ventas@neografika.com">ventas@neografika.com</a><br />
 					<i class="icon-mail contact"></i> <a href="mailto:direccion@neografika.com">direccion@neografika.com</a><br />

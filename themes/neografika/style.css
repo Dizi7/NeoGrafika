@@ -77,12 +77,12 @@ input[type="submit"]:focus, input[type="button"]:focus {
 }
 
 ::selection {
-	background: #fefac7; /* Safari */
-	color: #555555;
+	background: #DD0000; /* Safari */
+	color: #FFFFFF;
 }
 ::-moz-selection {
-	background: #fefac7; /* Firefox */
-	color: #555555;
+	background: #DD0000; /* Firefox */
+	color: #FFFFFF;
 }
 
 *, *:before, *:after {
@@ -436,12 +436,12 @@ header .menu {
 }
 header {
     /*background-color: #262626;*/
-    background-color: #050505;
+    background-color: #121212;
     display: block;
 }
 header .inner{
     /*background-color: #262626;*/
-    background-color: #050505;
+    background-color: #121212;
 }
 .top-wrapper .inner {
     padding: 40px 0
@@ -809,7 +809,7 @@ footer h6 {
     color: #e0e0e0
 }
 .subfooter-wrapper {
-    background: #262626;
+    background: #1A1A1A;
     color: #bebebe;
     text-align: center;
 }
