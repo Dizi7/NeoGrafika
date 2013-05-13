@@ -29,9 +29,9 @@
 						<!-- Begin Menu -->
 						<nav id="menu" class="menu">
 							<ul id="tiny">
-								<li class="active"><a href="<?= site_url() ?>">Inicio	</a></li>
-								<li><a href="<?= site_url() ?>">Catalogo</a></li>
-								<li><a href="<?= site_url() ?>">Nosotros</a></li>
+								<li class="active"><a href="<?= site_url() ?>">Inicio</a></li>
+								<li><a href="<?= site_url('/catalogo/') ?>">Catalogo</a></li>
+								<li><a href="<?= site_url('/nosotros/') ?>">Nosotros</a></li>
 								<li><a href="<?= site_url('/contacto/') ?>">Contacto</a></li>
 							</ul>
 						</nav>
@@ -45,5 +45,3 @@
 				} ?>
 
 			</div><!-- End Top Wrapper -->
-
-
