@@ -29,17 +29,10 @@
 						<!-- Begin Menu -->
 						<nav id="menu" class="menu">
 							<ul id="tiny">
-								<li class="active"><a href="index.html">Inicio	</a></li>
-								<li><a href="portfolio.html">Catalogo</a>
-									<ul>
-										<li><a href="index2.html">Business Style I</a></li>
-										<li><a href="index3.html">Business Style II</a></li>
-										<li><a href="index4.html">Latest Blog</a></li>
-										<li><a href="index5.html">Pricing Table</a></li>
-									</ul>
-								</li>
-								<li><a href="index2.html">Nosotros</a></li>
-								<li><a href="contact.html">Contacto</a></li>
+								<li class="active"><a href="<?= site_url() ?>">Inicio	</a></li>
+								<li><a href="<?= site_url() ?>">Catalogo</a></li>
+								<li><a href="<?= site_url() ?>">Nosotros</a></li>
+								<li><a href="<?= site_url('/contacto/') ?>">Contacto</a></li>
 							</ul>
 						</nav>
 						<!-- End Menu -->

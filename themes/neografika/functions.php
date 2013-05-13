@@ -6,24 +6,6 @@
 		return ( current_user_can("administrator") ) ? $content : false;
 	});
 
-// QUITAR ELEMENTOS DEL MENU DENTRO DEL DASHBOARD ////////////////////////////////////
-
-/*	add_action('admin_menu', function() {
-		// quitar estos elementos
-		$remove = array(__('Pages'),__('Posts'),__('Tools'),__('Comments'),__('Appearance'));
-
-		// global menu object
-		global $menu; end($menu);
-
-		// filtrar y quitar los elementos
-		while(prev($menu)){
-			$value = explode(' ',$menu[key($menu)][0]);
-			if(in_array($value[0] != NULL ? $value[0] : '' , $remove)){
-				unset( $menu[key($menu)] );
-			}
-		}
-	});*/
-
 // POST TYPES, METABOXES AND TAXONOMIES //////////////////////////////////////////////
 
 	require_once('inc/metaboxes.php');
@@ -56,6 +38,7 @@
 		wp_enqueue_script('twitter', JSPATH.'twitter.min.js', '', false, false );
 		wp_enqueue_script('boostrapslider', JSPATH.'boostrapslider.js', '', false, false );
 		wp_enqueue_script('scripts', JSPATH.'scripts.js',  array('jquery'), false, true );
+		wp_localize_script('scripts', 'ajax_url',  get_bloginfo('wpurl').'/wp-admin/admin-ajax.php');
 
 		// styles
 		wp_enqueue_style('style', get_stylesheet_uri());
@@ -80,14 +63,13 @@
 	}
 
 	if(function_exists( 'add_image_size' )){
-		add_image_size( 'propiedad-thumb', 270, 220, true );
+		add_image_size( 'producto_thumb', 270, 220, true );
 	}
-
 
 // ADD EXTRA CONFIGURATIONS TO ADMIN MENU ////////////////////////////////////////////
 
 	add_action( 'admin_menu', function(){
-		$remove = array(__('Pages'),__('Posts'),__('Tools'),__('Comments'),__('Appearance'));
+		$remove = array(__('Posts'),__('Tools'),__('Comments'),__('Appearance'));
 		remove_dashboard_menus($remove);
 
 		//add_submenu_page( parent_slug, page_title, menu_title, capability, menu_slug, function )
@@ -166,6 +148,31 @@
 	}
 
 	/**
+	 *
+	 * Regresa todos los productos con el term especificado
+	 *
+	 * @param term slug
+	 * @return Array of objects que contiene todos los posts(productos)
+	 *
+	 **/
+	function get_posts_by_term_slug($slug){
+		global $wpdb;
+		$result = $wpdb->get_results(
+			"SELECT * from wp_posts
+				INNER JOIN wp_term_relationships as tr
+					ON ID = tr.object_id
+				INNER JOIN wp_term_taxonomy as tt
+					ON tr.term_taxonomy_id = tt.term_taxonomy_id
+				INNER JOIN wp_terms as t
+					ON t.term_id = tt.term_id
+					WHERE t.slug = '$slug'
+						AND post_type   = 'producto'
+						AND post_status = 'publish'", OBJECT
+		);
+		return $result;
+	}
+
+	/**
 	 * Quita elementos del sidebar dentro del dashboard
 	 *
 	 * @param  remove : (Array) Arreglo con los elementos que se omitiran
@@ -180,3 +187,37 @@
 			}
 		}
 	}
+
+
+
+    function send_new_comment_mail(){
+
+        $message = (isset($_POST['message'])) ? $_POST['message'] : '';
+        $name    = (isset($_POST['name'])) ? $_POST['name'] : '';
+        $email   = (isset($_POST['email'])) ? $_POST['email'] : '';
+        $subject = (isset($_POST['subject'])) ? $_POST['subject'] : '';
+
+        $headers = 'From: wordpress <wordpress@lakatia.com>' . "\r\n";
+
+        date_default_timezone_set("Mexico/General");
+        $date = date("Y-m-d H:i:s");
+
+        add_filter( 'wp_mail_content_type', 'set_html_content_type' );
+
+        if( $name ){
+           wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
+                   'Fecha: '.$date.'<br />Nombre: '. $name .'<br />Email: '. $email .'<br />Mensaje:<br /><br />'. $message, $headers );
+        }else{
+            wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
+                    'Fecha: '.$date.'<br />Mensaje:<br /><br />'. $message, $headers );
+        }
+
+        remove_filter( 'wp_mail_content_type', 'set_html_content_type' ); // reset content-type to to avoid conflicts
+
+    }
+    add_action('wp_ajax_send_new_comment_mail', 'send_new_comment_mail');
+    add_action('wp_ajax_nopriv_send_new_comment_mail', 'send_new_comment_mail');
+
+    function set_html_content_type(){
+        return 'text/html';
+    }

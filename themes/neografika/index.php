@@ -4,26 +4,38 @@
 	<div class="light-wrapper">
 		<!-- Begin Inner -->
 		<div class="inner">
-			<h1 class="aligncenter">Latest Works</h1>
-			<p class="description aligncenter">
-				Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-			</p>
+			<h1 class="aligncenter">Catalogo</h1>
+			<p class="description aligncenter">Reyes de la Lucha Libre</p><br />
 
-			<br />
-
+			<!-- Lista de categosias disponibles -->
 			<div class="portfolio-wrapper showcase">
 				<ul class="filter">
-					<li><a class="active" href="#" data-filter="*">All</a></li>
+					<li><a class="active" href="#" data-filter="*">Todos</a></li>
+
+					<?php $categories = get_categories(
+							array(
+								'type'     => 'producto',
+								'taxonomy' => 'category',
+								'exclude'  => 1
+							)); ?>
+					<?php foreach ($categories as $categorie) : ?>
+						<li><a href="#" data-filter=".<?= $categorie->name ?>"><?= $categorie->name ?></a></li>
+					<?php endforeach; ?>
+
+					<!--
 					<li><a href="#" data-filter=".web">Web Design</a></li>
 					<li><a href="#" data-filter=".graphic">Graphic</a></li>
 					<li><a href="#" data-filter=".artwork">Artwork</a></li>
 					<li><a href="#" data-filter=".video">Video</a></li>
+					-->
 				</ul>
 
 				<ul class="items col4">
 
-					<?php $products = get_products_data();  // [ID] title, content [subtitle] price [sku] [size] [category]
-						foreach ($products as $index => $product) { ?>
+					<?php $products = get_products_data();  // ID, title, content, subtitle, price, sku, size, category
+						foreach ($products as $index => $product) {
+							$product->price = ($product->price) ? $product->price : 0;
+							?>
 							<li class="item <?= $product->category ?> web" data-callback="callPortfolioScripts();"
 								data-detailcontent='<div class="content">
 														<div id="myCarousel" class="carousel slide">
@@ -63,7 +75,13 @@
 										<h3><?= _e($product->title) ?></h3>
 										<span class="meta"><?= $product->subtitle ?></span>
 									</div>
-									<img src="<?php bloginfo('template_directory') ?>/images/art/p1.jpg" alt="" />
+									<?php
+										if( has_post_thumbnail($product->ID) ){
+											echo get_the_post_thumbnail( $product->ID, 'producto_thumb' );
+										}else{
+											echo '<img src="http://placehold.it/270x220">';
+										}
+									?>
 								</a>
 							</li><!-- end item -->
 					<?php } ?>

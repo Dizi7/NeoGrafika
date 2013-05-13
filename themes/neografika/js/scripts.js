@@ -5,6 +5,7 @@
 (function($){
 
 	(function () {
+
 	    function t(e) {
 	        this.path = e;
 	        var t = this.path.split("."),
@@ -108,6 +109,39 @@
 	/*-----------------------------------------------------------------------------------*/
 	/*	FORM
 	/*-----------------------------------------------------------------------------------*/
+	$(document).ready(function () {
+		$('.btn-submit').on('click', function (e){
+			e.preventDefault();
+
+			var name    = $('#name').val(),
+				email   = $('#email').val(),
+				subject = $('#subject').val(),
+				message = $('#message').val();
+
+			if ( name === '' || name === 'Nombre'){
+				alert('Ingresa el Nombre');
+			}else if ( email === '' || email === 'Email'){
+				alert('Ingresa una direccion de email valida');
+			}else if ( message === '' ){
+				alert('Ingresa tu mensaje');
+			}else{
+				$.ajax({
+	                type: 'POST',
+	                url: ajax_url,
+	                data: {
+	                    name: name,
+	                    email: email,
+	                    subject: subject,
+	                    message: message,
+	                    action: 'send_new_comment_mail'
+	                },
+	                dataType: 'json'
+	            }).done(function(data){
+					console.log(data);
+				});
+			}
+		});
+	});
 	jQuery(document).ready(function ($) {
 	    $('.forms').dcSlickForms();
 	});
@@ -711,7 +745,6 @@
 	/*-----------------------------------------------------------------------------------*/
 	getTwitters('twitter', {
 	    id: 'ChiclickMx',
-	    id: twitter_username,
 	    count: 1,
 	    enableLinks: true,
 	    ignoreReplies: false,
