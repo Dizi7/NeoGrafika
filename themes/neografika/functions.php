@@ -69,7 +69,7 @@
 // ADD EXTRA CONFIGURATIONS TO ADMIN MENU ////////////////////////////////////////////
 
 	add_action( 'admin_menu', function(){
-		$remove = array(__('Posts'),__('Tools'),__('Comments'),__('Appearance'));
+		$remove = array(__('Posts'),__('Tools'),__('Comments')),
 		remove_dashboard_menus($remove);
 
 		//add_submenu_page( parent_slug, page_title, menu_title, capability, menu_slug, function )
