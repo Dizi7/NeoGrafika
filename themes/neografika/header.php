@@ -25,11 +25,11 @@
 			<div class="top-wrapper">
 				<header>
 					<div class="inner">
-						<div class="logo"><a href="index.html"><img src="<?php bloginfo('template_directory') ?>/images/logo.png" alt="" /></a></div>
+						<div class="logo"><a href="<?= site_url() ?>"><img src="<?php bloginfo('template_directory') ?>/images/logo.png" alt="" /></a></div>
 						<!-- Begin Menu -->
 						<nav id="menu" class="menu">
 							<ul id="tiny">
-								<li class="active"><a href="<?= site_url() ?>">Inicio</a></li>
+								<li><a href="<?= site_url() ?>">Inicio</a></li>
 								<li><a href="<?= site_url('/catalogo/') ?>">Catalogo</a></li>
 								<li><a href="<?= site_url('/nosotros/') ?>">Nosotros</a></li>
 								<li><a href="<?= site_url('/contacto/') ?>">Contacto</a></li>
@@ -39,6 +39,7 @@
 						<div class="clear"></div>
 					</div>
 				</header>
+
 
 				<?php if( is_home() ){
 					get_template_part('templates/header/header', 'banner');
