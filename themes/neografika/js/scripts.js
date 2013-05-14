@@ -9,12 +9,14 @@
 		$(document).ready(function() {
 
 			var url = window.location.pathname;
-		console.log(window.location.pathname);
-		//console.log(url.replace(/\/$/,''));
-			var regexp = new RegExp(url.replace(/\/$/,''));
+url = url.replace(/\/$/,''));
+			console.log(url);
+
 
 			$('#tiny a').each(function(){
-				if(regexp.test($(this).attr('href'))){
+				if(url === ''){
+					$('#inicio').addClass('active');
+				}else if( $(this).attr('id') === url ){
 					$(this).parent().addClass('active');
 				}
 			});

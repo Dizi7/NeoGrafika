@@ -29,10 +29,10 @@
 						<!-- Begin Menu -->
 						<nav id="menu" class="menu">
 							<ul id="tiny">
-								<li><a href="<?= site_url() ?>">Inicio</a></li>
-								<li><a href="<?= site_url('/catalogo/') ?>">Catalogo</a></li>
-								<li><a href="<?= site_url('/nosotros/') ?>">Nosotros</a></li>
-								<li><a href="<?= site_url('/contacto/') ?>">Contacto</a></li>
+								<li id="inicio"><a href="<?= site_url() ?>">Inicio</a></li>
+								<li id="catalogo"><a href="<?= site_url('/catalogo/') ?>">Catalogo</a></li>
+								<li id="nosotros"><a href="<?= site_url('/nosotros/') ?>">Nosotros</a></li>
+								<li id="contacto"><a href="<?= site_url('/contacto/') ?>">Contacto</a></li>
 							</ul>
 						</nav>
 						<!-- End Menu -->
