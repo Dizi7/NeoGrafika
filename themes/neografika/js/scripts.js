@@ -9,9 +9,7 @@
 		$(document).ready(function() {
 
 			var url = window.location.pathname;
-url = url.replace(/\/$/,''));
-			console.log(url);
-
+				url = url.replace(/\/$/,'');
 
 			$('#tiny a').each(function(){
 				if(url === ''){
@@ -163,7 +161,7 @@ url = url.replace(/\/$/,''));
 			}
 		});
 	});
-	jQuery(document).ready(function ($) {
+	jQuery(document).ready(function () {
 		$('.forms').dcSlickForms();
 	});
 	$(document).ready(function () {

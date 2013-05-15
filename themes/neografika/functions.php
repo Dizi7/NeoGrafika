@@ -142,11 +142,11 @@
     function send_new_comment_mail(){
 
         $message = (isset($_POST['message'])) ? $_POST['message'] : '';
-        $name    = (isset($_POST['name'])) ? $_POST['name'] : '';
-        $email   = (isset($_POST['email'])) ? $_POST['email'] : '';
+        $name    = (isset($_POST['name']))    ? $_POST['name']    : '';
+        $email   = (isset($_POST['email']))   ? $_POST['email']   : '';
         $subject = (isset($_POST['subject'])) ? $_POST['subject'] : '';
 
-        $headers = 'From: wordpress <wordpress@lakatia.com>' . "\r\n";
+        $headers = 'From: wordpress <wordpress@neografika.com>' . "\r\n";
 
         date_default_timezone_set("Mexico/General");
         $date = date("Y-m-d H:i:s");
