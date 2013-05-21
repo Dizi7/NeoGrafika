@@ -9,8 +9,12 @@ a.button,
 .comment-form .btn-submit,
 .filter li a,
 .page-navi ul li a {
+    background-color: #595959;
+}
+a.button:hover {
     background-color: #DD0000;
 }
+
 ul li:before {
     color: #BB0000;
 }

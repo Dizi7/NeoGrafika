@@ -104,6 +104,21 @@
 		);
 	}
 
+	function scrub_get_distribuidores(){
+		global $wpdb;
+		return $wpdb->get_results(
+			"SELECT ID,
+					post_title AS title,
+					meta_value AS meta
+				FROM wp_posts
+					INNER JOIN wp_postmeta
+						ON ID = post_id
+						AND meta_key = '_distribuidor_info'
+							WHERE post_type = 'distribuidor'
+							AND post_status = 'publish';", OBJECT
+		);
+	}
+
 	/**
 	 *
 	 * Ajax callback function para eliminar attachments
@@ -139,34 +154,34 @@
 	}
 
 
-    function send_new_comment_mail(){
+	function send_new_comment_mail(){
 
-        $message = (isset($_POST['message'])) ? $_POST['message'] : '';
-        $name    = (isset($_POST['name']))    ? $_POST['name']    : '';
-        $email   = (isset($_POST['email']))   ? $_POST['email']   : '';
-        $subject = (isset($_POST['subject'])) ? $_POST['subject'] : '';
+		$message = (isset($_POST['message'])) ? $_POST['message'] : '';
+		$name    = (isset($_POST['name']))    ? $_POST['name']    : '';
+		$email   = (isset($_POST['email']))   ? $_POST['email']   : '';
+		$subject = (isset($_POST['subject'])) ? $_POST['subject'] : '';
 
-        $headers = 'From: wordpress <wordpress@neografika.com>' . "\r\n";
+		$headers = 'From: wordpress <wordpress@neografika.com>' . "\r\n";
 
-        date_default_timezone_set("Mexico/General");
-        $date = date("Y-m-d H:i:s");
+		date_default_timezone_set("Mexico/General");
+		$date = date("Y-m-d H:i:s");
 
-        add_filter( 'wp_mail_content_type', 'set_html_content_type' );
+		add_filter( 'wp_mail_content_type', 'set_html_content_type' );
 
-        if( $name ){
-           wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
-                   'Fecha: '.$date.'<br />Nombre: '. $name .'<br />Email: '. $email .'<br />Mensaje:<br /><br />'. $message, $headers );
-        }else{
-            wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
-                    'Fecha: '.$date.'<br />Mensaje:<br /><br />'. $message, $headers );
-        }
+		if( $name ){
+		   wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
+				   'Fecha: '.$date.'<br />Nombre: '. $name .'<br />Email: '. $email .'<br />Mensaje:<br /><br />'. $message, $headers );
+		}else{
+			wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
+					'Fecha: '.$date.'<br />Mensaje:<br /><br />'. $message, $headers );
+		}
 
-        remove_filter( 'wp_mail_content_type', 'set_html_content_type' ); // reset content-type to to avoid conflicts
+		remove_filter( 'wp_mail_content_type', 'set_html_content_type' ); // reset content-type to to avoid conflicts
 
-    }
-    add_action('wp_ajax_send_new_comment_mail', 'send_new_comment_mail');
-    add_action('wp_ajax_nopriv_send_new_comment_mail', 'send_new_comment_mail');
+	}
+	add_action('wp_ajax_send_new_comment_mail', 'send_new_comment_mail');
+	add_action('wp_ajax_nopriv_send_new_comment_mail', 'send_new_comment_mail');
 
-    function set_html_content_type(){
-        return 'text/html';
-    }
+	function set_html_content_type(){
+		return 'text/html';
+	}

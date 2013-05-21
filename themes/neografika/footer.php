@@ -12,13 +12,16 @@
 					<li><i class="icon-mail"></i> <a href="mailto:direcciongeneral@neografika.com">direcciongeneral@neografika.mx</a></li>
 				</ul>
 				<ul class="social">
-					<li><a href="#"><i class="icon-s-facebook"></i></a></li>
-					<li><a href="#"><i class="icon-s-twitter"></i></a></li>
+					<li><a href="https://www.facebook.com/Neografika"><i class="icon-s-facebook"></i></a></li>
+					<li><a href="https://twitter.com/NeografikaMX"><i class="icon-s-twitter"></i></a></li>
+					<li><a href="#"><i class="icon-s-pinterest"></i></a></li>
+					<!--
 					<li><a href="#"><i class="icon-s-skype"></i></a></li>
 					<li><a href="#"><i class="icon-s-linkedin"></i></a></li>
 					<li><a href="#"><i class="icon-s-vimeo"></i></a></li>
 					<li><a href="#"><i class="icon-s-youtube"></i></a></li>
 					<li><a href="#"><i class="icon-s-instagram"></i></a></li>
+					-->
 				</ul>
 			</div>
 			<!-- Begin Inner -->

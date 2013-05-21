@@ -8,7 +8,12 @@
 		add_meta_box('producto_sku_meta', 'Identificador ', 'producto_meta_sku_setup', 'producto', 'side', 'low');
 		add_meta_box('producto_medidas_meta', 'Medidas ', 'producto_meta_medidas_setup', 'producto', 'side', 'low');
 		add_meta_box('producto_fotogaleria_meta', 'Fotogalería', 'producto_meta_fotogaleria_setup', 'producto', 'normal', 'low');
+
+		// Distribuidores
+		add_meta_box('distribuidor_info', 'Información Distribuidor', 'show_distribuidor_metabox', 'distribuidor', 'normal', 'low');
 	});
+
+// CUSTOM METABOXES CALLBACK FUNCTIONS ///////////////////////////////////////////////
 
 	// Producto: Precio
 	function producto_meta_precio_setup($post){
@@ -65,7 +70,7 @@
 
 	function display_image_field( $image ){
 		$uploads_dir = wp_upload_dir();
-		echo<<<IMAGE
+		echo <<< IMAGE
 			<div>
 				<input type="file" class="input-img" name="_fotogaleria[]">
 				<input type="submit" class="button eliminar-img" data-post_id="$image->ID" value="Eliminar">
@@ -74,6 +79,52 @@
 				</div>
 			</div>
 IMAGE;
+	}
+
+	function show_distribuidor_metabox($post){
+
+		$meta     = get_post_meta($post->ID, '_distribuidor_info', true);
+		$contacto = (isset($meta['contacto'])) ? $meta['contacto'] : '';
+		$calle    = (isset($meta['calle']))    ? $meta['calle']    : '';
+		$colonia  = (isset($meta['colonia']))  ? $meta['colonia']  : '';
+		$postal   = (isset($meta['postal']))   ? $meta['postal']   : '';
+		$telefono = (isset($meta['telefono'])) ? $meta['telefono'] : '';
+		$website  = (isset($meta['website']))  ? $meta['website']  : '';
+
+		echo <<< DISTRIBUIDOR
+
+		<div class="metaField">
+			<label for="contacto" class="metaLabel">Persona Contacto</label>
+			<input type="text" name="_distribuidor_info[contacto]" id="contacto" class="regular-text" value="$contacto" />
+		</div>
+
+		<div class="metaField">
+			<label for="calle" class="metaLabel">Calle y Numero</label>
+			<input type="text" name="_distribuidor_info[calle]" id="calle" class="regular-text" value="$calle" />
+		</div>
+
+		<div class="metaField">
+			<label for="colonia" class="metaLabel">Colonia</label>
+			<input type="text" name="_distribuidor_info[colonia]" id="colonia" class="regular-text" value="$colonia" />
+		</div>
+
+		<div class="metaField">
+			<label for="postal" class="metaLabel">Codigo Postal</label>
+			<input type="text" name="_distribuidor_info[postal]" id="postal" class="regular-text" value="$postal" />
+		</div>
+
+		<div class="metaField">
+			<label for="telefono" class="metaLabel">Teléfono</label>
+			<input type="text" name="_distribuidor_info[telefono]" id="telefono" class="regular-text" value="$telefono" />
+		</div>
+
+		<div class="metaField">
+			<label for="website" class="metaLabel">Website</label>
+			<input type="text" name="_distribuidor_info[website]" id="website" class="regular-text" value="$website" />
+		</div>
+
+DISTRIBUIDOR;
+		wp_nonce_field(__FILE__, '_distribuidor_info_nonce');
 	}
 
 // SAVE METABOXES DATA ///////////////////////////////////////////////////////////////
@@ -150,6 +201,14 @@ IMAGE;
 					// set_post_thumbnail( $post_id, $attach_id );
 				}
 			}
+		}
+
+		// Distribuidores: _distribuidor_info
+		if(isset($_POST['_distribuidor_info'])){
+			if( !wp_verify_nonce($_POST['_distribuidor_info_nonce'], __FILE__)){
+				return $post_id;
+			}
+			update_post_meta($post_id, '_distribuidor_info', $_POST['_distribuidor_info']);
 		}
 
 	});

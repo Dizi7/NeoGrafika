@@ -383,13 +383,12 @@
 	 * @author ThunderBudies http://themeforest.net/user/Thunderbuddies/portfolio
 	 **************************************************************************/
 	jQuery(document).ready(function() {
-		 var $container = $('.portfolio-wrapper.showcase .items');
 
+		 var $container = $('.portfolio-wrapper.showcase .items');
 		 var speed = 600;
 		 var header_offset = 0;
 		 var scrollspeed = 600;
 		 var force_scrolltotop = false;
-
 
 		 ///////////////////////////
 		// GET THE URL PARAMETER //
