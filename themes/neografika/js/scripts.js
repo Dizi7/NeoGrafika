@@ -6,6 +6,42 @@
 
 	(function () {
 
+
+
+		if (matchMedia) {
+			var mq = window.matchMedia("(min-width: 767px)");
+			mq.addListener(WidthChange);
+			WidthChange(mq);
+
+			var mq_smaller = window.matchMedia("(min-width: 495px)");
+			mq.addListener(WidthChangeMobile);
+			WidthChangeMobile(mq);
+		}
+		// media query change
+		function WidthChange(mq) {
+			if (mq.matches) {
+				// window width is at least 767px
+				$('.item img').attr('height', '270');
+			}
+			else {
+				$('.item img').attr('height', '200');
+			}
+		}
+
+		function WidthChangeMobile(mq){
+			if(!mq.matches){
+				$('.item img').attr('height', '140');
+				$('.filter a').css({
+					'font-size': '14px',
+					'width': '110px',
+					'height': '35px',
+					'margin-left': '14px'
+				});
+			}
+		}
+
+
+
 		$(document).ready(function() {
 
 			var url = window.location.pathname;
