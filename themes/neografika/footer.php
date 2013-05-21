@@ -4,12 +4,12 @@
 			<!-- Begin Inner -->
 			<div class="inner">
 				<h1>Contacto</h1>
-				<p class="description">Vestibulum id ligula porta felis euismod semper, malesuada euismod curabitur blandit.</p>
+				<p class="description">Calle saltillo 14304, Eje vial K. Col. SNTE, C.P. 72490. Puebla, Pue. Mex.</p>
 				<ul class="contact-info">
 					<!-- <li><i class="icon-location"></i> Moonshine St. 14/05 Light City, Jupiter</li> -->
-					<li><i class="icon-phone"></i> <a href="tel://6176101405">55-4095-8596</a></li>
+					<li><i class="icon-phone"></i> <a href="tel://2223957162">52+ 222-395-71-62</a></li>
 					<li><i class="icon-mail"></i> <a href="mailto:ventas@neografika.com">ventas@neografika.com</a></li>
-					<li><i class="icon-mail"></i> <a href="mailto:direccion@neografika.com">direccion@neografika.com</a></li>
+					<li><i class="icon-mail"></i> <a href="mailto:direcciongeneral@neografika.com">direcciongeneral@neografika.mx</a></li>
 				</ul>
 				<ul class="social">
 					<li><a href="#"><i class="icon-s-facebook"></i></a></li>
@@ -29,7 +29,7 @@
 		<div class="subfooter-wrapper">
 			<!-- Begin Inner -->
 			<div class="inner">
-				<p>© 2013 NeoGrafika. Todos los derechos reservados.</p>
+				<p>© 2013 Neografika. Todos los derechos reservados.</p>
 			</div>
 			<!-- Begin Inner -->
 		</div>

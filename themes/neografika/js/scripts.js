@@ -763,7 +763,7 @@
 	/*	TWITTER
 	/*-----------------------------------------------------------------------------------*/
 	getTwitters('twitter', {
-		id: 'ChiclickMx',
+		id: 'neografikaMX',
 		count: 1,
 		enableLinks: true,
 		ignoreReplies: false,

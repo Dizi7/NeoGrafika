@@ -67,8 +67,11 @@
 															<li><span class="lite1">Medidas:</span> <?= $product->size ?></li>
 														</ul>
 														<p><?= _e($product->content) ?></p>
+														<p class="disclaimer">Las piezas expuestas en la presente página, pertenecen a una colección de piezas únicas, y no a un catálogo, debido a ello pueden presentar variaciones, en producciones posteriores.
+</p>
 														<a href="#" class="button">Detalles</a>
 													</div>
+
 													<div class="clear"></div>'>
 								<a href="#">
 									<div class="overlay">
