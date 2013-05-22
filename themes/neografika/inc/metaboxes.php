@@ -111,7 +111,7 @@ IMAGE;
 		</div>
 
 		<div class="metaField">
-			<label for="calle" class="metaLabel">Calle y Numero</label>
+			<label for="calle" class="metaLabel">Domicilio</label>
 			<input type="text" name="_distribuidor_info[calle]" id="calle" class="distribuidor" value="$calle" />
 		</div>
 
@@ -121,7 +121,7 @@ IMAGE;
 		</div>
 
 		<div class="metaField">
-			<label for="delegacion" class="metaLabel">Delegación</label>
+			<label for="delegacion" class="metaLabel">Delegación o municipio</label>
 			<input type="text" name="_distribuidor_info[delegacion]" id="delegacion" class="distribuidor" value="$delegacion" />
 		</div>
 
@@ -131,8 +131,8 @@ IMAGE;
 		</div>
 
 		<div class="metaField">
-			<label for="ciudad" class="metaLabel">Ciudad</label>
-			<input type="text" name="_distribuidor_info[ciudad]" id="ciudad" class="distribuidor" value="$ciudad" />
+			<label for="estado" class="metaLabel">Estado</label>
+			<input type="text" name="_distribuidor_info[estado]" id="estado" class="distribuidor" value="$estado" />
 		</div>
 
 		<div class="metaField">
