@@ -92,44 +92,62 @@ IMAGE;
 
 	function show_distribuidor_metabox($post){
 
-		$meta     = get_post_meta($post->ID, '_distribuidor_info', true);
-		$contacto = (isset($meta['contacto'])) ? $meta['contacto'] : '';
-		$calle    = (isset($meta['calle']))    ? $meta['calle']    : '';
-		$colonia  = (isset($meta['colonia']))  ? $meta['colonia']  : '';
-		$postal   = (isset($meta['postal']))   ? $meta['postal']   : '';
-		$telefono = (isset($meta['telefono'])) ? $meta['telefono'] : '';
-		$website  = (isset($meta['website']))  ? $meta['website']  : '';
+		$meta       = get_post_meta($post->ID, '_distribuidor_info', true);
+		$contacto   = (isset($meta['contacto']))   ? $meta['contacto']   : '';
+		$calle      = (isset($meta['calle']))      ? $meta['calle']      : '';
+		$colonia    = (isset($meta['colonia']))    ? $meta['colonia']    : '';
+		$delegacion = (isset($meta['delegacion'])) ? $meta['delegacion'] : '';
+		$pais       = (isset($meta['pais']))       ? $meta['pais']       : '';
+		$ciudad     = (isset($meta['ciudad']))     ? $meta['ciudad']     : '';
+		$postal     = (isset($meta['postal']))     ? $meta['postal']     : '';
+		$telefono   = (isset($meta['telefono']))   ? $meta['telefono']   : '';
+		$website    = (isset($meta['website']))    ? $meta['website']    : '';
 
 		echo <<< DISTRIBUIDOR
 
 		<div class="metaField">
 			<label for="contacto" class="metaLabel">Persona Contacto</label>
-			<input type="text" name="_distribuidor_info[contacto]" id="contacto" class="regular-text" value="$contacto" />
+			<input type="text" name="_distribuidor_info[contacto]" id="contacto" class="distribuidor" value="$contacto" />
 		</div>
 
 		<div class="metaField">
 			<label for="calle" class="metaLabel">Calle y Numero</label>
-			<input type="text" name="_distribuidor_info[calle]" id="calle" class="regular-text" value="$calle" />
+			<input type="text" name="_distribuidor_info[calle]" id="calle" class="distribuidor" value="$calle" />
 		</div>
 
 		<div class="metaField">
 			<label for="colonia" class="metaLabel">Colonia</label>
-			<input type="text" name="_distribuidor_info[colonia]" id="colonia" class="regular-text" value="$colonia" />
+			<input type="text" name="_distribuidor_info[colonia]" id="colonia" class="distribuidor" value="$colonia" />
+		</div>
+
+		<div class="metaField">
+			<label for="delegacion" class="metaLabel">Delegación</label>
+			<input type="text" name="_distribuidor_info[delegacion]" id="delegacion" class="distribuidor" value="$delegacion" />
+		</div>
+
+		<div class="metaField">
+			<label for="pais" class="metaLabel">País</label>
+			<input type="text" name="_distribuidor_info[pais]" id="pais" class="distribuidor" value="$pais" />
+		</div>
+
+		<div class="metaField">
+			<label for="ciudad" class="metaLabel">Ciudad</label>
+			<input type="text" name="_distribuidor_info[ciudad]" id="ciudad" class="distribuidor" value="$ciudad" />
 		</div>
 
 		<div class="metaField">
 			<label for="postal" class="metaLabel">Codigo Postal</label>
-			<input type="text" name="_distribuidor_info[postal]" id="postal" class="regular-text" value="$postal" />
+			<input type="text" name="_distribuidor_info[postal]" id="postal" class="distribuidor" value="$postal" />
 		</div>
 
 		<div class="metaField">
 			<label for="telefono" class="metaLabel">Teléfono</label>
-			<input type="text" name="_distribuidor_info[telefono]" id="telefono" class="regular-text" value="$telefono" />
+			<input type="text" name="_distribuidor_info[telefono]" id="telefono" class="distribuidor" value="$telefono" />
 		</div>
 
 		<div class="metaField">
 			<label for="website" class="metaLabel">Website</label>
-			<input type="text" name="_distribuidor_info[website]" id="website" class="regular-text" value="$website" />
+			<input type="text" name="_distribuidor_info[website]" id="website" class="distribuidor" value="$website" />
 		</div>
 
 DISTRIBUIDOR;
