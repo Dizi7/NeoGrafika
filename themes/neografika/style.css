@@ -608,7 +608,7 @@ p.description {
     width: 30.66%
 }
 .one-third .special{
-    font-size: 30px;
+    font-size: 18px;
     display: inline-block;
     line-height: 1;
     margin-bottom: 10px;
@@ -2803,8 +2803,13 @@ media_tag_5 {media_subcode:5}
 	box-shadow: 0 0 3px 0 rgba(0,0,0,0.17);
 }
 
+.distribuidor{
+    margin-bottom: 20px;
+    height: 225px;
+}
+
 .distribuidor-title{
-    font-size: 30px;
+    font-size: 15px;
     text-transform: uppercase;
     font-style: normal;
     font-weight: bold;

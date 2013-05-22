@@ -7,6 +7,7 @@
 		add_meta_box('producto_precio_meta', 'Precio', 'producto_meta_precio_setup', 'producto', 'side', 'low');
 		add_meta_box('producto_sku_meta', 'Identificador ', 'producto_meta_sku_setup', 'producto', 'side', 'low');
 		add_meta_box('producto_medidas_meta', 'Medidas ', 'producto_meta_medidas_setup', 'producto', 'side', 'low');
+		add_meta_box('producto_peso_meta', 'Peso ', 'producto_meta_peso_setup', 'producto', 'side', 'low');
 		add_meta_box('producto_fotogaleria_meta', 'Fotogalería', 'producto_meta_fotogaleria_setup', 'producto', 'normal', 'low');
 
 		// Distribuidores
@@ -28,12 +29,20 @@
 		echo "<input type='text' class='widefat' id='sku' name='_stock_keeping_unit' value='$sku'/>";
 	}
 
-	// Producto: Stock Keeping Unit (Identificador)
+	// Producto: Medidas
 	function producto_meta_medidas_setup($post){
 		$size = get_post_meta($post->ID, '_product_size', true);
 		wp_nonce_field(__FILE__, '_product_size_nonce');
 		echo "<input type='text' class='widefat' id='size' name='_product_size' value='$size'/>";
 	}
+
+	// Producto: Peso
+	function producto_meta_peso_setup($post){
+		$weight = get_post_meta($post->ID, '_product_weight', true);
+		wp_nonce_field(__FILE__, '_product_weight_nonce');
+		echo "<input type='text' class='widefat' id='weight' name='_product_weight' value='$weight'/>";
+	}
+
 
 	// Producto: Incluir foto galeria
 	function producto_meta_fotogaleria_setup($post){
@@ -83,44 +92,69 @@ IMAGE;
 
 	function show_distribuidor_metabox($post){
 
-		$meta     = get_post_meta($post->ID, '_distribuidor_info', true);
-		$contacto = (isset($meta['contacto'])) ? $meta['contacto'] : '';
-		$calle    = (isset($meta['calle']))    ? $meta['calle']    : '';
-		$colonia  = (isset($meta['colonia']))  ? $meta['colonia']  : '';
-		$postal   = (isset($meta['postal']))   ? $meta['postal']   : '';
-		$telefono = (isset($meta['telefono'])) ? $meta['telefono'] : '';
-		$website  = (isset($meta['website']))  ? $meta['website']  : '';
+		$meta       = get_post_meta($post->ID, '_distribuidor_info', true);
+		$contacto   = (isset($meta['contacto']))   ? $meta['contacto']   : '';
+		$calle      = (isset($meta['calle']))      ? $meta['calle']      : '';
+		$colonia    = (isset($meta['colonia']))    ? $meta['colonia']    : '';
+		$pais       = (isset($meta['pais']))       ? $meta['pais']       : '';
+		$estado     = (isset($meta['estado']))     ? $meta['estado']     : '';
+		$delegacion = (isset($meta['delegacion'])) ? $meta['delegacion'] : '';
+		$postal     = (isset($meta['postal']))     ? $meta['postal']     : '';
+		$telefono   = (isset($meta['telefono']))   ? $meta['telefono']   : '';
+		$email      = (isset($meta['email']))      ? $meta['email']      : '';
+		$website    = (isset($meta['website']))    ? $meta['website']    : '';
 
 		echo <<< DISTRIBUIDOR
 
 		<div class="metaField">
 			<label for="contacto" class="metaLabel">Persona Contacto</label>
-			<input type="text" name="_distribuidor_info[contacto]" id="contacto" class="regular-text" value="$contacto" />
+			<input type="text" name="_distribuidor_info[contacto]" id="contacto" class="distribuidor" value="$contacto" />
 		</div>
 
 		<div class="metaField">
-			<label for="calle" class="metaLabel">Calle y Numero</label>
-			<input type="text" name="_distribuidor_info[calle]" id="calle" class="regular-text" value="$calle" />
+			<label for="calle" class="metaLabel">Domicilio</label>
+			<input type="text" name="_distribuidor_info[calle]" id="calle" class="distribuidor" value="$calle" />
 		</div>
 
 		<div class="metaField">
 			<label for="colonia" class="metaLabel">Colonia</label>
-			<input type="text" name="_distribuidor_info[colonia]" id="colonia" class="regular-text" value="$colonia" />
+			<input type="text" name="_distribuidor_info[colonia]" id="colonia" class="distribuidor" value="$colonia" />
+		</div>
+
+		<div class="metaField">
+			<label for="pais" class="metaLabel">País</label>
+			<input type="text" name="_distribuidor_info[pais]" id="pais" class="distribuidor" value="$pais" />
+		</div>
+
+		<div class="metaField">
+			<label for="estado" class="metaLabel">Estado</label>
+			<input type="text" name="_distribuidor_info[estado]" id="estado" class="distribuidor" value="$estado" />
+		</div>
+
+		<div class="metaField">
+			<label for="delegacion" class="metaLabel">Delegación o municipio</label>
+			<input type="text" name="_distribuidor_info[delegacion]" id="delegacion" class="distribuidor" value="$delegacion" />
 		</div>
 
 		<div class="metaField">
 			<label for="postal" class="metaLabel">Codigo Postal</label>
-			<input type="text" name="_distribuidor_info[postal]" id="postal" class="regular-text" value="$postal" />
+			<input type="text" name="_distribuidor_info[postal]" id="postal" class="distribuidor" value="$postal" />
 		</div>
 
 		<div class="metaField">
 			<label for="telefono" class="metaLabel">Teléfono</label>
-			<input type="text" name="_distribuidor_info[telefono]" id="telefono" class="regular-text" value="$telefono" />
+			<input type="text" name="_distribuidor_info[telefono]" id="telefono" class="distribuidor" value="$telefono" />
 		</div>
 
 		<div class="metaField">
+			<label for="Email" class="metaLabel">Email</label>
+			<input type="text" name="_distribuidor_info[Email]" id="Email" class="distribuidor" value="$Email" />
+		</div>
+
+
+		<div class="metaField">
 			<label for="website" class="metaLabel">Website</label>
-			<input type="text" name="_distribuidor_info[website]" id="website" class="regular-text" value="$website" />
+			<input type="text" name="_distribuidor_info[website]" id="website" class="distribuidor" value="$website" />
 		</div>
 
 DISTRIBUIDOR;
@@ -154,10 +188,18 @@ DISTRIBUIDOR;
 
 		// Productos: _product_size
 		if(isset($_POST['_product_size'])){
-			if( !wp_verify_nonce($_POST['_product_size_nonce'], __FILE__)){
+			if( !wp_verify_nonce($_POST['_product_weight_nonce'], __FILE__)){
 				return $post_id;
 			}
 			update_post_meta($post_id, '_product_size', $_POST['_product_size']);
+		}
+
+		// Productos: _product_size
+		if(isset($_POST['_product_weight'])){
+			if( !wp_verify_nonce($_POST['_product_size_nonce'], __FILE__)){
+				return $post_id;
+			}
+			update_post_meta($post_id, '_product_weight', $_POST['_product_weight']);
 		}
 
 		// Productos - Fotogalería: _fotogaleria_meta

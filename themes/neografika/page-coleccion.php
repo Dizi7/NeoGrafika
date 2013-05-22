@@ -4,9 +4,12 @@
 	<div class="light-wrapper">
 		<!-- Begin Inner -->
 		<div class="inner">
-			<h1 class="aligncenter">Colección NeoGrafika</h1>
+			<h1 class="aligncenter">Colección Neografika</h1>
 			<p class="description aligncenter">
-				Hablar de México es hablar de un país de luchadores, hombres y mujeres, que sin importar nuestras diferencias políticas religiosas o culturales, apostamos a diario nuestra mascara o nuestra cabellera en el coliseo de la vida, donde brazos y piernas caen en pos de sacrificio, o se levantan y vuelan en pos de sus sueños…
+				Hablar de México es hablar de un país de luchadores, hombres y mujeres,
+				que sin importar nuestras diferencias políticas religiosas o culturales,
+				apostamos a diario nuestra mascara o nuestra cabellera en el coliseo de la vida,
+				donde brazos y piernas caen en pos de sacrificio, o se levantan y vuelan en pos de sus sueños…
 			</p>
 			<br />
 
