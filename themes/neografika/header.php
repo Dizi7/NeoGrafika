@@ -30,7 +30,7 @@
 						<nav id="menu" class="menu">
 							<ul id="tiny">
 								<li id="inicio"><a href="<?= site_url() ?>">Inicio</a></li>
-								<li id="catalogo"><a href="<?= site_url('/catalogo/') ?>">Catalogo</a></li>
+								<li id="catalogo"><a href="<?= site_url('/coleccion/') ?>">Colección</a></li>
 								<li id="nosotros"><a href="<?= site_url('/nosotros/') ?>">Nosotros</a></li>
 								<li id="contacto"><a href="<?= site_url('/contacto/') ?>">Contacto</a></li>
 							</ul>

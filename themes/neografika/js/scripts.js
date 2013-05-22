@@ -6,6 +6,42 @@
 
 	(function () {
 
+
+
+		if (matchMedia) {
+			var mq = window.matchMedia("(min-width: 767px)");
+			mq.addListener(WidthChange);
+			WidthChange(mq);
+
+			var mq_smaller = window.matchMedia("(min-width: 495px)");
+			mq.addListener(WidthChangeMobile);
+			WidthChangeMobile(mq);
+		}
+		// media query change
+		function WidthChange(mq) {
+			if (mq.matches) {
+				// window width is at least 767px
+				$('.item img').attr('height', '270');
+			}
+			else {
+				$('.item img').attr('height', '200');
+			}
+		}
+
+		function WidthChangeMobile(mq){
+			if(!mq.matches){
+				$('.item img').attr('height', '140');
+				$('.filter a').css({
+					'font-size': '14px',
+					'width': '110px',
+					'height': '35px',
+					'margin-left': '14px'
+				});
+			}
+		}
+
+
+
 		$(document).ready(function() {
 
 			var url = window.location.pathname;
@@ -383,13 +419,12 @@
 	 * @author ThunderBudies http://themeforest.net/user/Thunderbuddies/portfolio
 	 **************************************************************************/
 	jQuery(document).ready(function() {
-		 var $container = $('.portfolio-wrapper.showcase .items');
 
+		 var $container = $('.portfolio-wrapper.showcase .items');
 		 var speed = 600;
 		 var header_offset = 0;
 		 var scrollspeed = 600;
 		 var force_scrolltotop = false;
-
 
 		 ///////////////////////////
 		// GET THE URL PARAMETER //
@@ -763,7 +798,7 @@
 	/*	TWITTER
 	/*-----------------------------------------------------------------------------------*/
 	getTwitters('twitter', {
-		id: 'ChiclickMx',
+		id: 'neografikaMX',
 		count: 1,
 		enableLinks: true,
 		ignoreReplies: false,

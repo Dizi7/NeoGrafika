@@ -4,7 +4,7 @@
 	<div class="light-wrapper">
 		<!-- Begin Inner -->
 		<div class="inner">
-			<h1 class="aligncenter">Catalogo</h1>
+			<h1 class="aligncenter">Colección</h1>
 			<p class="description aligncenter">Reyes de la Lucha Libre</p><br />
 
 			<!-- Lista de categosias disponibles -->
@@ -42,15 +42,11 @@
 															<div class="carousel-inner">
 																<div class="active item">
 																	<img alt="" width="100%" src="<?php bloginfo('template_directory') ?>/images/art/ds5-1.jpg">
-																	<a href="<?php bloginfo('template_directory') ?>/images/art/ds5-1.jpg" class="fancybox-media" rel="item-5">
-																		<span class="link"></span>
-																	</a>
+																	<a href="<?php bloginfo('template_directory') ?>/images/art/ds5-1.jpg" class="fancybox-media" rel="item-5"></a>
 																</div>
 																<div class="item">
 																	<img alt="" width="100%" src="<?php bloginfo('template_directory') ?>/images/art/ds5-2.jpg">
-																	<a href="<?php bloginfo('template_directory') ?>/images/art/ds5-2.jpg" class="fancybox-media" rel="item-5">
-																		<span class="link"></span>
-																	</a>
+																	<a href="<?php bloginfo('template_directory') ?>/images/art/ds5-2.jpg" class="fancybox-media" rel="item-5"></a>
 																</div>
 															</div>
 
@@ -67,8 +63,13 @@
 															<li><span class="lite1">Medidas:</span> <?= $product->size ?></li>
 														</ul>
 														<p><?= _e($product->content) ?></p>
-														<a href="#" class="button">Detalles</a>
+														<p class="disclaimer">
+															Las piezas expuestas en la presente página, pertenecen a una colección de piezas únicas,
+															y no a un catálogo, debido a ello pueden presentar variaciones, en producciones posteriores.
+														</p>
+														<a href="<?= site_url('/distribuidores/'); ?>" class="button">Comprar</a>
 													</div>
+
 													<div class="clear"></div>'>
 								<a href="#">
 									<div class="overlay">
