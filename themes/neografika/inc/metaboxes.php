@@ -98,7 +98,7 @@ IMAGE;
 		$colonia    = (isset($meta['colonia']))    ? $meta['colonia']    : '';
 		$delegacion = (isset($meta['delegacion'])) ? $meta['delegacion'] : '';
 		$pais       = (isset($meta['pais']))       ? $meta['pais']       : '';
-		$ciudad     = (isset($meta['ciudad']))     ? $meta['ciudad']     : '';
+		$estado     = (isset($meta['estado']))     ? $meta['estado']     : '';
 		$postal     = (isset($meta['postal']))     ? $meta['postal']     : '';
 		$telefono   = (isset($meta['telefono']))   ? $meta['telefono']   : '';
 		$website    = (isset($meta['website']))    ? $meta['website']    : '';
