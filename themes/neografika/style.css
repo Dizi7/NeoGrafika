@@ -602,7 +602,15 @@ p.description {
 /*	COLUMNS
 /*-----------------------------------------------------------------------------------*/
 .one-half {
-    width: 48%
+    width: 48%;
+    margin-right: 20px !important;
+}
+.one-half .special{
+    color: #DD0000;
+    font-size: 19px;
+    display: inline-block;
+    line-height: 1;
+    margin-bottom: 10px;
 }
 .one-third {
     width: 30.66%
