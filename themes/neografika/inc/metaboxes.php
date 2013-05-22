@@ -96,11 +96,12 @@ IMAGE;
 		$contacto   = (isset($meta['contacto']))   ? $meta['contacto']   : '';
 		$calle      = (isset($meta['calle']))      ? $meta['calle']      : '';
 		$colonia    = (isset($meta['colonia']))    ? $meta['colonia']    : '';
-		$delegacion = (isset($meta['delegacion'])) ? $meta['delegacion'] : '';
 		$pais       = (isset($meta['pais']))       ? $meta['pais']       : '';
 		$estado     = (isset($meta['estado']))     ? $meta['estado']     : '';
+		$delegacion = (isset($meta['delegacion'])) ? $meta['delegacion'] : '';
 		$postal     = (isset($meta['postal']))     ? $meta['postal']     : '';
 		$telefono   = (isset($meta['telefono']))   ? $meta['telefono']   : '';
+		$email      = (isset($meta['email']))      ? $meta['email']      : '';
 		$website    = (isset($meta['website']))    ? $meta['website']    : '';
 
 		echo <<< DISTRIBUIDOR
@@ -121,11 +122,6 @@ IMAGE;
 		</div>
 
 		<div class="metaField">
-			<label for="delegacion" class="metaLabel">Delegación o municipio</label>
-			<input type="text" name="_distribuidor_info[delegacion]" id="delegacion" class="distribuidor" value="$delegacion" />
-		</div>
-
-		<div class="metaField">
 			<label for="pais" class="metaLabel">País</label>
 			<input type="text" name="_distribuidor_info[pais]" id="pais" class="distribuidor" value="$pais" />
 		</div>
@@ -133,6 +129,11 @@ IMAGE;
 		<div class="metaField">
 			<label for="estado" class="metaLabel">Estado</label>
 			<input type="text" name="_distribuidor_info[estado]" id="estado" class="distribuidor" value="$estado" />
+		</div>
+
+		<div class="metaField">
+			<label for="delegacion" class="metaLabel">Delegación o municipio</label>
+			<input type="text" name="_distribuidor_info[delegacion]" id="delegacion" class="distribuidor" value="$delegacion" />
 		</div>
 
 		<div class="metaField">
@@ -144,6 +145,12 @@ IMAGE;
 			<label for="telefono" class="metaLabel">Teléfono</label>
 			<input type="text" name="_distribuidor_info[telefono]" id="telefono" class="distribuidor" value="$telefono" />
 		</div>
+
+		<div class="metaField">
+			<label for="Email" class="metaLabel">Email</label>
+			<input type="text" name="_distribuidor_info[Email]" id="Email" class="distribuidor" value="$Email" />
+		</div>
+
 
 		<div class="metaField">
 			<label for="website" class="metaLabel">Website</label>
