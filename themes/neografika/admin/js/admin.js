@@ -43,10 +43,63 @@
 					.append('<input type="submit" class="button eliminar-img" data-post_id="" value="Eliminar">')
 					.append('<div class="fotogaleria"></div>')
 			);
-
 		});
 
 		$('#settings-contacto-message').hide();
+
+
+	// UPLOADING FILES CALLBACK FUNCTIONS //////////////////////////////////
+
+		var save_attachment = function(attachment){
+
+			var jqxhr = $.ajax({
+				type: 'POST',
+				url: ajax_url,
+				data: {
+					attachment: attachment,
+					action: 'set_slider_image'
+				}
+			});
+
+			jqxhr.done(function (data, textStatus, jqXHR){
+				console.log('done');
+				console.log(data);
+				console.log(textStatus);
+				console.log(jqXHR);
+			});
+
+		};
+
+	// UPLOADING FILES  ////////////////////////////////////////////////////
+
+		var file_frame, attachment;
+
+		$('.upload_image_button').live('click', function (e){
+
+			e.preventDefault();
+
+			if ( file_frame ) {
+				file_frame.open(); return;
+			}
+
+			// Crear el media frame.
+			file_frame = wp.media.frames.file_frame = wp.media({
+				title: $(this).data('uploader_title'),
+				button: {
+					text: $(this).data('uploader_button_text'),
+				},
+				multiple: false
+			});
+
+			file_frame.on('select', function(){
+				attachment = file_frame.state().get('selection').first().toJSON();
+				save_attachment(attachment);
+
+			});
+
+			// open the modal
+			file_frame.open();
+		});
 
 	// SCRUB HELPER FUNCTIONS  /////////////////////////////////////////////
 
@@ -98,6 +151,8 @@
 			});
 		}
 
-	});
+
+
+	}); //end
 
 })(jQuery);
