@@ -6,8 +6,6 @@
 
 	(function () {
 
-
-
 		if (matchMedia) {
 			var mq = window.matchMedia("(min-width: 767px)");
 			mq.addListener(WidthChange);
