@@ -10,7 +10,7 @@
 			<?php $distribuidores = scrub_get_distribuidores();
 			foreach ($distribuidores as $index => $distribuidor) {
 				$meta = unserialize($distribuidor->meta);
-				$last = (($index+1)%3) ? '' : 'last'; ?>
+				$last = ( ($index+1)%3 ) ? '' : 'last'; ?>
 
 				<div class="one-third distribuidor <?= $last ?>">
 					<i class="icon-location special">
