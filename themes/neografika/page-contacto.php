@@ -30,7 +30,7 @@
 								<textarea name="message" id="message" class="text-area required"></textarea>
 							</li>
 							<li class="button-row">
-								<input type="submit" value="Submit" name="submit" class="btn-submit" />
+								<input type="submit" value="Enviar" name="submit" class="btn-submit" />
 							</li>
 						</ol>
 					</fieldset>

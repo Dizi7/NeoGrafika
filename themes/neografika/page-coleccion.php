@@ -34,22 +34,18 @@
 							<?php foreach ($posts as $index => $product) : ?>
 								<li class="touchcarousel-item item-block">
 									<?php
-									if( has_post_thumbnail($product->ID) ) :
-										echo get_the_post_thumbnail( $product->ID, 'producto_thumb' );
-									else :
-										echo '<img src="http://placehold.it/270x220">';
-									endif; ?>
-									<!--
-									<a href="style/images/art/full1.jpg" class="fancybox-media" rel="web-design" data-title-id="title-01">
+									echo ( has_post_thumbnail($product->ID) )
+										? get_the_post_thumbnail( $product->ID, 'producto_thumb' )
+										: '<img src="http://placehold.it/270x220" width="270" height="220" alt="">'; ?>
+
+									<a href="style/images/art/full1.jpg" class="fancybox-media" rel="web-design" data-title-id="title-<?= $product->ID ?>">
 										<span class="link"></span>
 									</a>
-									-->
 								</li>
-								<div id="title-01" class="info hidden">
-									<h2>Etiam Mattis Ornare</h2>
+								<div id="title-<?= $product->ID ?>" class="info hidden">
+									<h2><?= $product->post_title ?></h2>
 									<div class="fancybody">
-										Maecenas faucibus mollis interdum. Aenean eu leo quam. Pellentesque ornare sem
-										<a href="#">lacinia quam</a> venenatis vestibulum. Maecenas sed diam eget risus varius.
+										<?= $product->post_content ?>
 									</div>
 								</div>
 							<?php endforeach; ?>
