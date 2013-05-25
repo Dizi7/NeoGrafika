@@ -67,7 +67,6 @@
 				console.log(textStatus);
 				console.log(jqXHR);
 			});
-
 		};
 
 	// UPLOADING FILES  ////////////////////////////////////////////////////
