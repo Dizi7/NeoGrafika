@@ -1,26 +1,61 @@
-stdClass::__set_state(array(
-   'ID' => 14,
-   'post_author' => '1',
-   'post_date' => '2013-05-01 18:59:37',
-   'post_date_gmt' => '2013-05-01 18:59:37',
-   'post_content' => '',
-   'post_title' => 'wunderlist2.png',
-   'post_excerpt' => '',
-   'post_status' => 'inherit',
-   'comment_status' => 'open',
-   'ping_status' => 'open',
-   'post_password' => '',
-   'post_name' => 'wunderlist2-png',
-   'to_ping' => '',
-   'pinged' => '',
-   'post_modified' => '2013-05-01 18:59:37',
-   'post_modified_gmt' => '2013-05-01 18:59:37',
-   'post_content_filtered' => '',
-   'post_parent' => 9,
-   'guid' => '',
-   'menu_order' => 0,
-   'post_type' => 'attachment',
-   'post_mime_type' => 'image/png',
-   'comment_count' => '0',
-   'filter' => 'raw',
-))
+array (
+  'uploading' => 'false',
+  'date' => '1369373472000',
+  'filename' => 'panther.gif',
+  'menuOrder' => '0',
+  'uploadedTo' => '0',
+  'type' => 'image',
+  'subtype' => 'gif',
+  'id' => '40',
+  'title' => 'panther',
+  'url' => 'http://localhost/neografika/wp-content/uploads/2013/05/panther.gif',
+  'link' => 'http://localhost/neografika/?attachment_id=40',
+  'alt' => '',
+  'author' => '1',
+  'description' => '',
+  'caption' => '',
+  'name' => 'panther',
+  'status' => 'inherit',
+  'modified' => '1369373472000',
+  'mime' => 'image/gif',
+  'icon' => 'http://localhost/neografika/wp-includes/images/crystal/default.png',
+  'dateFormatted' => 'mayo 24, 2013',
+  'nonces' => 
+  array (
+    'update' => 'e1f3b37523',
+    'delete' => '98cdb9e873',
+  ),
+  'editLink' => 'http://localhost/neografika/wp-admin/post.php?post=40&action=edit',
+  'sizes' => 
+  array (
+    'thumbnail' => 
+    array (
+      'height' => '150',
+      'width' => '150',
+      'url' => 'http://localhost/neografika/wp-content/uploads/2013/05/panther-150x150.gif',
+      'orientation' => 'landscape',
+    ),
+    'medium' => 
+    array (
+      'height' => '300',
+      'width' => '300',
+      'url' => 'http://localhost/neografika/wp-content/uploads/2013/05/panther-300x300.gif',
+      'orientation' => 'landscape',
+    ),
+    'full' => 
+    array (
+      'height' => '327',
+      'width' => '327',
+      'url' => 'http://localhost/neografika/wp-content/uploads/2013/05/panther.gif',
+      'orientation' => 'landscape',
+    ),
+  ),
+  'height' => '327',
+  'width' => '327',
+  'orientation' => 'landscape',
+  'compat' => 
+  array (
+    'item' => '',
+    'meta' => '',
+  ),
+)
