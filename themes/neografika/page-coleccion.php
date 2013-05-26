@@ -4,8 +4,13 @@
 	<div class="light-wrapper">
 		<!-- Begin Inner -->
 		<div class="inner">
-			<h1 class="aligncenter">Catalogo NeoGrafika</h1>
-			<p class="description aligncenter">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur.</p>
+			<h1 class="aligncenter">Colección Neografika</h1>
+			<p class="description aligncenter">
+				Hablar de México es hablar de un país de luchadores, hombres y mujeres,
+				que sin importar nuestras diferencias políticas religiosas o culturales,
+				apostamos a diario nuestra mascara o nuestra cabellera en el coliseo de la vida,
+				donde brazos y piernas caen en pos de sacrificio, o se levantan y vuelan en pos de sus sueños…
+			</p>
 			<br />
 
 			<?php $categories = get_categories(

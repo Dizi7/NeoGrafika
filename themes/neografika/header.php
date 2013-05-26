@@ -25,14 +25,15 @@
 			<div class="top-wrapper">
 				<header>
 					<div class="inner">
-						<div class="logo"><a href="index.html"><img src="<?php bloginfo('template_directory') ?>/images/logo.png" alt="" /></a></div>
+						<div class="logo"><a href="<?= site_url() ?>"><img src="<?php bloginfo('template_directory') ?>/images/logo.png" alt="" /></a></div>
 						<!-- Begin Menu -->
 						<nav id="menu" class="menu">
 							<ul id="tiny">
-								<li class="active"><a href="<?= site_url() ?>">Inicio	</a></li>
-								<li><a href="<?= site_url() ?>">Catalogo</a></li>
-								<li><a href="<?= site_url() ?>">Nosotros</a></li>
-								<li><a href="<?= site_url('/contacto/') ?>">Contacto</a></li>
+								<li id="inicio"><a href="<?= site_url() ?>">Inicio</a></li>
+								<li id="catalogo"><a href="<?= site_url('/coleccion/') ?>">Colección</a></li>
+								<li id="distribuidores"><a href="<?= site_url('/distribuidores/') ?>">Distribuidores</a></li>
+								<li id="nosotros"><a href="<?= site_url('/nosotros/') ?>">Nosotros</a></li>
+								<li id="contacto"><a href="<?= site_url('/contacto/') ?>">Contacto</a></li>
 							</ul>
 						</nav>
 						<!-- End Menu -->
@@ -40,10 +41,9 @@
 					</div>
 				</header>
 
+
 				<?php if( is_home() ){
 					get_template_part('templates/header/header', 'banner');
 				} ?>
 
 			</div><!-- End Top Wrapper -->
-
-

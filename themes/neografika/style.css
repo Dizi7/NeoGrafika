@@ -1,7 +1,7 @@
 /*
 Theme Name: neografika
 Theme URI: http://tangentlabs.mx
-Author: Los Maquiladores
+Author: scrubmx
 Author URI: http://tangentlabs.mx
 Description: Tema de WordPress Personalizado para NeoGrafika
 Version: 1.0
@@ -77,12 +77,12 @@ input[type="submit"]:focus, input[type="button"]:focus {
 }
 
 ::selection {
-	background: #fefac7; /* Safari */
-	color: #555555;
+	background: #DD0000; /* Safari */
+	color: #FFFFFF;
 }
 ::-moz-selection {
-	background: #fefac7; /* Firefox */
-	color: #555555;
+	background: #DD0000; /* Firefox */
+	color: #FFFFFF;
 }
 
 *, *:before, *:after {
@@ -256,7 +256,10 @@ a.button.orange {
 }
 a.button.gray,
 .filter li a.active {
-    background: #595959
+    background: #DD0000
+}
+.filter li a:hover {
+    background: #DD0000 !important;
 }
 a.button:hover,
 .filter li a:hover,
@@ -354,8 +357,8 @@ ol li {
     text-transform: uppercase;
 }
 .lite1 {
-    color: #ff6760;
-    border-bottom: 1px dotted #ff6760;
+    color: #fff !important;
+    border-bottom: 1px dotted #fff !important;
 }
 .lite2 {
     background: #fefac7
@@ -436,12 +439,12 @@ header .menu {
 }
 header {
     /*background-color: #262626;*/
-    background-color: #050505;
+    background-color: #121212;
     display: block;
 }
 header .inner{
     /*background-color: #262626;*/
-    background-color: #050505;
+    background-color: #121212;
 }
 .top-wrapper .inner {
     padding: 40px 0
@@ -599,10 +602,25 @@ p.description {
 /*	COLUMNS
 /*-----------------------------------------------------------------------------------*/
 .one-half {
-    width: 48%
+    width: 48%;
+    margin-right: 20px !important;
+}
+.one-half .special{
+    color: #DD0000;
+    font-size: 19px;
+    display: inline-block;
+    line-height: 1;
+    margin-bottom: 10px;
 }
 .one-third {
     width: 30.66%
+}
+.one-third .special{
+    color: #DD0000;
+    font-size: 19px;
+    display: inline-block;
+    line-height: 1;
+    margin-bottom: 10px;
 }
 .two-third {
     width: 65.33%
@@ -809,7 +827,7 @@ footer h6 {
     color: #e0e0e0
 }
 .subfooter-wrapper {
-    background: #262626;
+    background: #1A1A1A;
     color: #bebebe;
     text-align: center;
 }
@@ -1115,6 +1133,11 @@ ul.contact-info li i {
 }
 .portfolio-content .item {
     margin-bottom: 60px
+}
+.disclaimer{
+    color: #999;
+    font-size: 12px;
+    line-height: 14px;
 }
 /*-----------------------------------------------------------------------------------*/
 /*	PORTFOLIO NAVIGATION
@@ -2787,4 +2810,22 @@ media_tag_5 {media_subcode:5}
 	-webkit-box-shadow: 0 0 3px 0 rgba(0,0,0,0.17);
 	-moz-box-shadow: 0 0 3px 0 rgba(0,0,0,0.17);
 	box-shadow: 0 0 3px 0 rgba(0,0,0,0.17);
+}
+
+.distribuidor{
+    margin-bottom: 20px;
+    height: 225px;
+    border: 1px solid #e9e9e9;
+    padding: 12px;
+}
+
+.distribuidor-title{
+    font-size: 18px;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.distribuidor p{
+    padding-left: 10px;
 }

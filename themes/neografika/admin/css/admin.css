@@ -20,3 +20,16 @@ div.input-group label { display: block; float: left; width: 120px; font-size: 12
 	-webkit-border-radius: 3px;
 			border-radius: 3px;
 }
+
+.metaLabel{
+	width: 25%;
+	display: inline-block;
+}
+
+.metaField{
+	margin: 20px 0 15px;
+}
+
+.distribuidor{
+	width: 65%;
+}

@@ -9,7 +9,7 @@
 			<h2>Envíanos tus comentarios</h2>
 			<p>
 				Envíanos tus comentarios, dudas o sugerencias y nos pondremos en contacto contigo a la brevedad.
-				Nos interesa conocerte y que sepas qué hacemos y qué ofrecemos en NeoGrafika.
+				Nos interesa conocerte y que sepas qué hacemos y qué ofrecemos en Neografika.
 			</p>
 			<!-- Begin Form -->
 			<div class="form-container">
@@ -41,11 +41,16 @@
 			<aside class="sidebar">
 				<div class="sidebox">
 					<h3>Dirección</h3>
-					<p>Arte popular mexicano.</p>
-					<i class="icon-location contact"></i> Mexico Distrito Federal<br />
-					<i class="icon-phone contact"></i> <a href="tel://6176101405">55-4095-8596</a><br />
+
+					<p>
+					Calle saltillo 14304, Eje vial K. <br/>
+					Col. SNTE, C.P. 72490. <br/>
+					Puebla, Pue. Mex.
+					</p>
+					<i class="icon-location contact"></i>  México, Distrito Federal<br />
+					<i class="icon-phone contact"></i> <a href="tel://2223957162">52+222-395-71-62</a><br />
 					<i class="icon-mail contact"></i> <a href="mailto:ventas@neografika.com">ventas@neografika.com</a><br />
-					<i class="icon-mail contact"></i> <a href="mailto:direccion@neografika.com">direccion@neografika.com</a><br />
+					<i class="icon-mail contact"></i> <a href="mailto:direcciongeneral@neografika.com">direcciongeneral@neografika.com</a><br />
 				</div>
 			</aside>
 			<div class="clear"></div>

@@ -33,25 +33,34 @@
 			'supports'           => array( 'title', 'editor', 'thumbnail' )
 		);
 		register_post_type('producto', $args);
+
+		// post type productos
+		$labels = array(
+			'name'          => 'Distribuidores',
+			'singular_name' => 'Distribuidor',
+			'add_new'       => 'Nuevo Distribuidor',
+			'add_new_item'  => 'Nuevo Distribuidor',
+			'edit_item'     => 'Editar Distribuidor',
+			'new_item'      => 'Nuevo Distribuidor',
+			'all_items'     => 'Todos',
+			'view_item'     => 'Ver Distribuidor',
+			'search_items'  => 'Buscar Distribuidor',
+			'not_found'     => 'No se encontro',
+			'menu_name'     => 'Distribuidores'
+		);
+		$args = array(
+			'labels'             => $labels,
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'distribuidor' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array( 'title' )
+		);
+		register_post_type('distribuidor', $args);
 	});
-
-// ADD COLUMNS TO PRODUCTO POST TYPE ///////////////////////////////////////////////////
-
-	add_filter( 'manage_producto_posts_columns', function( $columns ){
-		$result = array_slice($columns, 0, 3, true) +
-					array( 'precio' => 'Precio' ) +
-						array_slice($columns, 3, count($columns)-3, true);
-		return $result;
-	});
-
-	add_action( 'manage_posts_custom_column', 'custom_producto_columns', 10, 2 );
-
-	function custom_producto_columns( $column, $post_id ) {
-		if( $column == 'precio' ){
-			$precio = get_post_meta($post_id, '_precio_meta', TRUE);
-			$precio = ($precio) ? $precio : '';
-			echo "<input type='number' class='small-text' min='0' step='any' value='$precio' >";
-			echo "<button class='button save-precio' data-post='$post_id'>Guardar</button>";
-		}
-	}
-
