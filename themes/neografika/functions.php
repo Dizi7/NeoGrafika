@@ -86,16 +86,6 @@
 		remove_dashboard_menus($remove);
 	});
 
-// SUB MENU PAGE - SLIDER ////////////////////////////////////////////////////////////
-
-	add_action("admin_menu", function () {
-	    add_menu_page('slider', 'Main Slider', 'administrator', 'main-slider', 'display_slider', '', 81 );
-	});
-
-	function display_slider(){
-		include_once('inc/dashboard-slider.php');
-	}
-
 // HELPER FUNCTIONS AND CLASSES //////////////////////////////////////////////////////
 
 	/**

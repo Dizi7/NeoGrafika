@@ -13,12 +13,12 @@
 	// Fehca Selección
 	function slider_callback(){
 		$seleccion = get_option('fecha_seleccion');
-		echo "<button class='upload_image_button' data-uploader_title='media_test'>Subir Imagen</button>";
+		echo "<button class='button upload_image_button' data-uploader_title='media_test'>Seleccionar imagen</button>";
 	} ?>
 
 	<div class="wrap">
-		<?php screen_icon('general'); ?>
-		<h2>Fechas de la Votación</h2>
+		<?php screen_icon('generic'); ?>
+		<h2>Imágenes del Slider</h2>
 		<form method="POST" action="options.php">
 			<?php settings_fields('votacion_iberocine'); ?>
 			<?php do_settings_sections(__FILE__); ?>
