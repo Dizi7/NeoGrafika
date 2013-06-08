@@ -182,7 +182,6 @@
 
 
 
-
 	function set_slider_image(){
 		global $wpdb;
 		$attachment = ( isset($_POST['attachment']) ) ? $_POST['attachment'] : false;
