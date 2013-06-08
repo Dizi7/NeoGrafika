@@ -72,42 +72,32 @@
 			}
 		}
 
-/*		$(window).resize(function() {
-			var width = $(this).width();
-			if(width < 960){
-				$('.distribuidor').css({
-					'height': '270px'
-				})
-				.removeClass('one-third')
-				.addClass('one-half');
-			}else{
-				$('.distribuidor').css({
-					'height': '225px'
-				})
-				.removeClass('one-half')
-				.addClass('one-third');
-			}
-		});*/
 
-
+		// Highlight links en la barra de navegación
 		$(document).ready(function() {
 
 			var url = window.location.pathname;
-				url = url.replace(/\/$/,'');
 
-			$('#tiny a').each(function(){
-				if(url === ''){
-					$('#inicio').addClass('active');
-				}else if( $(this).attr('id') === url ){
-					$(this).parent().addClass('active');
+			$('#tiny li').each(function(){
+
+				var element_id = $(this).attr('id');
+
+				if( url.indexOf(element_id) !== -1 ) {
+					$(this).addClass('active');
 				}
 			});
+
+			if( is_home === 'true' ){
+				$('#home').addClass('active');
+			}
 		});
+
 
 		function validateEmail(email) {
 			var regexp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 			return regexp.test(email);
 		}
+
 
 		function t(e) {
 			this.path = e;

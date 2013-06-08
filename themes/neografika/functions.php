@@ -14,6 +14,8 @@
 
 	add_action( 'wp_enqueue_scripts', function(){
 
+		$is_home = is_home() ? 'true' : 'false';
+
 		// scripts
 		wp_enqueue_script('ddsmoothmenu', JSPATH.'ddsmoothmenu.js', '', false, false );
 		wp_enqueue_script('isotope', JSPATH.'jquery.isotope.min.js', array('jquery'), false, false );
@@ -31,6 +33,7 @@
 		wp_enqueue_script('boostrapslider', JSPATH.'boostrapslider.js', '', false, false );
 		wp_enqueue_script('scripts', JSPATH.'scripts.js',  array('jquery'), false, true );
 		wp_localize_script('scripts', 'ajax_url',  get_bloginfo('wpurl').'/wp-admin/admin-ajax.php');
+		wp_localize_script('scripts', 'is_home', $is_home);
 
 		// styles
 		wp_enqueue_style('style', get_stylesheet_uri());
@@ -118,6 +121,46 @@
 
 
 
+// SUB MENU PAGE - SLIDER ////////////////////////////////////////////////////////////
+
+
+
+	add_action('admin_menu', function () {
+	    add_menu_page('slider', 'Neografika', 'administrator', 'main-slider', 'display_slider', '', 81 );
+	});
+
+	function display_slider(){
+
+		add_settings_section('slider_section', 'Página Principal', '', __FILE__);
+
+		add_settings_field('imagenes', 'Imágenes del Slider', 'slider_callback', __FILE__, 'slider_section'); ?>
+
+		<div class="wrap">
+			<?php screen_icon('generic'); ?>
+			<h2>Configuración del Tema</h2>
+			<form method="POST" action="options.php">
+				<?php settings_fields('votacion_iberocine'); ?>
+				<?php do_settings_sections(__FILE__); ?>
+			</form>
+			<div id="slider-images">
+				<?php $images = get_slider_images();
+					foreach ($images as $image) {
+						echo "<img src='$image->guid' />";
+					}?>
+			</div>
+		</div><?php
+	}
+
+	function slider_callback(){
+		$seleccion = get_option('fecha_seleccion');
+		echo "<button class='button upload_image_button'
+					data-uploader_title='Imágenes del Slider'
+					data-uploader_button_text='Seleccionar'>
+				Seleccionar imagen</button>";
+	}
+
+
+
 // HELPER FUNCTIONS AND CLASSES //////////////////////////////////////////////////////
 
 
@@ -139,6 +182,7 @@
 						AND post_parent = '$post_id';", OBJECT
 		);
 	}
+
 
 
 	/**
@@ -165,13 +209,28 @@
 
 
 	/**
+	 * Regresa las imagenes del slider
 	 *
+	 */
+	function get_slider_images(){
+		global $wpdb;
+		return $wpdb->get_results(
+			"SELECT * FROM wp_posts
+				INNER JOIN wp_postmeta
+					ON ID = post_id
+						WHERE meta_key = '_main_slider';", OBJECT
+		);
+	}
+
+
+
+
+	/**
 	 * Ajax callback function para eliminar attachments
 	 *
 	 * @param post_id
 	 * @return false on failure, post data on success
-	 *
-	 **/
+	 */
 	function delete_attachment(){
 		$result = wp_delete_attachment( $_POST['post_id'], true );
 		echo json_encode($result);
@@ -182,21 +241,41 @@
 
 
 
+	/**
+	 * Crea metadata '_main_slider' para identificar que esta imagen es del main slider
+	 *
+	 * @param attachment
+	 * @return attachment
+	 */
 	function set_slider_image(){
-		global $wpdb;
 		$attachment = ( isset($_POST['attachment']) ) ? $_POST['attachment'] : false;
+		$result = update_post_meta($attachment['id'], '_main_slider', 'true');
 		echo json_encode($attachment);
 	}
 	add_action('wp_ajax_set_slider_image', 'set_slider_image');
 	add_action('wp_ajax_nopriv_set_slider_image', 'set_slider_image');
 
 
+
 	/**
+	 * Elimina la metadata del attachment: '_main_slider'
 	 *
+	 * @param attachment
+	 * @return attachment
+	 */
+	function unset_slider_image(){
+		$attachment = ( isset($_POST['attachment']) ) ? $_POST['attachment'] : false;
+		delete_post_meta($attachment['id'], '_main_slider');
+		echo json_encode($attachment);
+	}
+	add_action('wp_ajax_unset_slider_image', 'unset_slider_image');
+	add_action('wp_ajax_nopriv_unset_slider_image', 'unset_slider_image');
+
+
+
+	/**
 	 * Quita elementos del sidebar dentro del dashboard
-	 *
 	 * @param  remove : (Array) Arreglo con los elementos que se omitiran
-	 *
 	 */
 	function remove_dashboard_menus($remove){
 

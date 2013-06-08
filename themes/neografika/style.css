@@ -9,6 +9,7 @@ License: DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 License URI: http://www.wtfpl.net/about/
 */
 
+
 /*-----------------------------------------------------------------------------------*/
 /*	RESET
 /*-----------------------------------------------------------------------------------*/
@@ -115,9 +116,11 @@ input[type="radio"]{
     box-sizing: border-box;
     width:10px;
 }
+
 /*-----------------------------------------------------------------------------------*/
 /*	GENERAL
 /*-----------------------------------------------------------------------------------*/
+
 body {
     background: #FFF;
     -webkit-font-smoothing: antialiased;
@@ -1411,7 +1414,8 @@ ul.contact-info li i {
 .searchform input:focus,
 .comment-form input:focus,
 .comment-form textarea:focus {
-    border: 1px solid #ccc
+    border: 1px solid #ccc;
+    background-color: #fcfcfc;
 }
 .forms fieldset .text-area,
 .comment-form textarea {

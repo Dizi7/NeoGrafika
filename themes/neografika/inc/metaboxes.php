@@ -33,19 +33,16 @@
 		wp_nonce_field(__FILE__, '_product_meta_nonce');
 
 		echo <<<METABOX
-
-			<label for="precio">Precio</label>
-			<input type='number' class='widefat' id='precio' name='_product_meta[precio]' value='$precio'/>
-
-			<label for="sku">Identificador</label>
-			<input type='text' class='widefat' id='sku' name='_product_meta[sku]' value='$sku'/>
-
-			<label for="size">Tamaño</label>
-			<input type='text' class='widefat' id='size' name='_product_meta[size]' value='$size'/>
-
-			<label for="weight">Peso</label>
-			<input type='text' class='widefat' id='weight' name='_product_meta[weight]' value='$weight'/>
-
+			<div class="producto-meta">
+				<label for="precio">Precio</label>
+				<input type='number' class='widefat' id='precio' name='_product_meta[precio]' value='$precio'/>
+				<label for="sku">Identificador</label>
+				<input type='text' class='widefat' id='sku' name='_product_meta[sku]' value='$sku'/>
+				<label for="size">Tamaño</label>
+				<input type='text' class='widefat' id='size' name='_product_meta[size]' value='$size'/>
+				<label for="weight">Peso</label>
+				<input type='text' class='widefat' id='weight' name='_product_meta[weight]' value='$weight'/>
+			</div>
 METABOX;
 	}
 
@@ -125,7 +122,7 @@ IMAGE;
 		</div>
 
 		<div class="metaField">
-			<label for="calle" class="metaLabel">Domicilio</label>
+			<label for="calle" class="metaLabel">Calle y Numero</label>
 			<input type="text" name="_distribuidor_info[calle]" id="calle" class="distribuidor" value="$calle" />
 		</div>
 

@@ -33,3 +33,6 @@ div.input-group label { display: block; float: left; width: 120px; font-size: 12
 .distribuidor{
 	width: 65%;
 }
+
+.producto-meta label{ margin-top: 5px; }
+.producto-meta input{ margin-bottom: 10px; }

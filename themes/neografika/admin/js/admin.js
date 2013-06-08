@@ -3,18 +3,29 @@
 
 	$(function(){
 
+
 	// PERMITE GUARDAR INPUT TYPE FILE - METABOXES /////////////////////////
+
+
 
 		$('form[id="post"]').attr('enctype', 'multipart/form-data');
 
+
+
 	// DISPLAY SELECTED IMAGE REAL TIME ////////////////////////////////////
+
+
 
 		$('.input-img').on('change', function(){
 			var container = $(this).siblings('.fotogaleria');
 			mq_display_file(this, container);
 		});
 
+
+
 	// ELIMINAR UNA IMAGEN DE PRODUCTO /////////////////////////////////////
+
+
 
 		$('.eliminar-img').live('click', function(e){
 			e.preventDefault();
@@ -32,7 +43,11 @@
 			container.attr('style', 'background: white');
 		});
 
+
+
 	// AGREGAR NUEVO CAMPO DE IMAGEN ///////////////////////////////////////
+
+
 
 		$('#image-add-toggle').live('click', function(e){
 			e.preventDefault();
@@ -48,7 +63,10 @@
 		$('#settings-contacto-message').hide();
 
 
+
 	// UPLOADING FILES CALLBACK FUNCTIONS //////////////////////////////////
+
+
 
 		var save_attachment = function(attachment){
 
@@ -69,7 +87,11 @@
 			});
 		};
 
+
+
 	// UPLOADING FILES  ////////////////////////////////////////////////////
+
+
 
 		var file_frame, attachment;
 
@@ -100,7 +122,11 @@
 			file_frame.open();
 		});
 
+
+
 	// SCRUB HELPER FUNCTIONS  /////////////////////////////////////////////
+
+
 
 		/**
 		 *
