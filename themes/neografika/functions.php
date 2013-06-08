@@ -96,7 +96,7 @@
 	 * @return ID
 	 * @return meta_value
 	 *
-	 **/
+	 */
 	function scrub_get_attachment_images($post_id){
 		global $wpdb;
 		return $wpdb->get_results(
@@ -157,11 +157,12 @@
 
 
 	/**
+	 *
 	 * Quita elementos del sidebar dentro del dashboard
 	 *
 	 * @param  remove : (Array) Arreglo con los elementos que se omitiran
 	 *
-	 **/
+	 */
 	function remove_dashboard_menus($remove){
 			global $menu; end($menu);
 		while(prev($menu)){
