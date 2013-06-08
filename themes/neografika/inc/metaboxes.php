@@ -2,45 +2,58 @@
 
 // CUSTOM METABOXES //////////////////////////////////////////////////////////////////
 
+
 	add_action('add_meta_boxes', function(){
+
 		// Productos
-		add_meta_box('producto_precio_meta', 'Precio', 'producto_meta_precio_setup', 'producto', 'side', 'low');
-		add_meta_box('producto_sku_meta', 'Identificador ', 'producto_meta_sku_setup', 'producto', 'side', 'low');
-		add_meta_box('producto_medidas_meta', 'Medidas ', 'producto_meta_medidas_setup', 'producto', 'side', 'low');
-		add_meta_box('producto_peso_meta', 'Peso ', 'producto_meta_peso_setup', 'producto', 'side', 'low');
-		add_meta_box('producto_fotogaleria_meta', 'Fotogalería', 'producto_meta_fotogaleria_setup', 'producto', 'normal', 'low');
+		add_meta_box('producto_precio_meta', 'Información del Producto', 'producto_metadata_setup', 'producto', 'side', 'low');
+		add_meta_box('producto_is_featured', 'Featured Product', 'producto_meta_featured_setup', 'producto', 'side', 'high');
 
 		// Distribuidores
 		add_meta_box('distribuidor_info', 'Información Distribuidor', 'show_distribuidor_metabox', 'distribuidor', 'normal', 'low');
+
 	});
+
 
 // CUSTOM METABOXES CALLBACK FUNCTIONS ///////////////////////////////////////////////
 
-	// Producto: Precio
-	function producto_meta_precio_setup($post){
-		$precio = get_post_meta($post->ID, '_unit_price', true);
-		echo "<input type='number' class='widefat' id='_unit_price' name='_unit_price' value='$precio'/>";
+
+
+	// Producto: Precio, Identificador, Medidas, Peso
+	function producto_metadata_setup($post){
+
+		$meta = get_post_meta($post->ID, '_product_meta', true);
+
+
+		$precio = isset($meta['precio']) ? $meta['precio'] : '';
+		$sku    = isset($meta['sku'])    ? $meta['sku']    : '';
+		$size   = isset($meta['size'])   ? $meta['size']   : '';
+		$weight = isset($meta['weight']) ? $meta['weight'] : '';
+
+		wp_nonce_field(__FILE__, '_product_meta_nonce');
+
+		echo <<<METABOX
+
+			<label for="precio">Precio</label>
+			<input type='number' class='widefat' id='precio' name='_product_meta[precio]' value='$precio'/>
+
+			<label for="sku">Identificador</label>
+			<input type='text' class='widefat' id='sku' name='_product_meta[sku]' value='$sku'/>
+
+			<label for="size">Tamaño</label>
+			<input type='text' class='widefat' id='size' name='_product_meta[size]' value='$size'/>
+
+			<label for="weight">Peso</label>
+			<input type='text' class='widefat' id='weight' name='_product_meta[weight]' value='$weight'/>
+
+METABOX;
 	}
 
-	// Producto: Stock Keeping Unit (Identificador)
-	function producto_meta_sku_setup($post){
-		$sku = get_post_meta($post->ID, '_stock_keeping_unit', true);
-		wp_nonce_field(__FILE__, '_stock_keeping_unit_nonce');
-		echo "<input type='text' class='widefat' id='sku' name='_stock_keeping_unit' value='$sku'/>";
-	}
 
-	// Producto: Medidas
-	function producto_meta_medidas_setup($post){
-		$size = get_post_meta($post->ID, '_product_size', true);
-		wp_nonce_field(__FILE__, '_product_size_nonce');
-		echo "<input type='text' class='widefat' id='size' name='_product_size' value='$size'/>";
-	}
-
-	// Producto: Peso
-	function producto_meta_peso_setup($post){
-		$weight = get_post_meta($post->ID, '_product_weight', true);
-		wp_nonce_field(__FILE__, '_product_weight_nonce');
-		echo "<input type='text' class='widefat' id='weight' name='_product_weight' value='$weight'/>";
+	function producto_meta_featured_setup($post){
+		$checkbox = (get_post_meta($post->ID, '_product_featured', true)) ? 'checked' : '';
+		wp_nonce_field(__FILE__, '_product_featured_nonce');
+		echo "<input type='checkbox' name='_product_featured' value='true' $checkbox /> Aparece en home?";
 	}
 
 
@@ -161,53 +174,48 @@ DISTRIBUIDOR;
 		wp_nonce_field(__FILE__, '_distribuidor_info_nonce');
 	}
 
+
+
 // SAVE METABOXES DATA ///////////////////////////////////////////////////////////////
+
+
 
 	add_action('save_post', function($post_id){
 
-		if( !current_user_can('edit_page', $post_id)){
+		if ( !current_user_can('edit_page', $post_id) ) {
 			return $post_id;
 		}
 
-		if(defined('DOING_AUTOSAVE') and DOING_AUTOSAVE){
+		if ( defined('DOING_AUTOSAVE') and DOING_AUTOSAVE ) {
 			return $post_id;
 		}
 
-		// Productos: _unit_price
-		if(isset($_POST['_unit_price'])){
-			update_post_meta($post_id, '_unit_price', $_POST['_unit_price']);
-		}
-
-		// Productos: _stock_keeping_unit
-		if(isset($_POST['_stock_keeping_unit'])){
-			if( !wp_verify_nonce($_POST['_stock_keeping_unit_nonce'], __FILE__)){
+		// Productos Metadata
+		if ( isset($_POST['_product_meta']) ) {
+			if( !wp_verify_nonce($_POST['_product_meta_nonce'], __FILE__)){
 				return $post_id;
 			}
-			update_post_meta($post_id, '_stock_keeping_unit', $_POST['_stock_keeping_unit']);
+			update_post_meta($post_id, '_product_meta', $_POST['_product_meta']);
 		}
 
-		// Productos: _product_size
-		if(isset($_POST['_product_size'])){
-			if( !wp_verify_nonce($_POST['_product_weight_nonce'], __FILE__)){
+
+		// Producto aparece en el home?
+		if ( isset($_POST['_product_featured']) ) {
+			update_post_meta($post_id, '_product_featured', $_POST['_product_featured']);
+		} else {
+			delete_post_meta($post_id, '_product_featured');
+		}
+
+
+		// Distribuidores Metadata
+		if(isset($_POST['_distribuidor_info'])){
+			if( !wp_verify_nonce($_POST['_distribuidor_info_nonce'], __FILE__)){
 				return $post_id;
 			}
-			update_post_meta($post_id, '_product_size', $_POST['_product_size']);
+			update_post_meta($post_id, '_distribuidor_info', $_POST['_distribuidor_info']);
 		}
 
-		// Productos: _product_size
-		if(isset($_POST['_product_weight'])){
-			if( !wp_verify_nonce($_POST['_product_size_nonce'], __FILE__)){
-				return $post_id;
-			}
-			update_post_meta($post_id, '_product_weight', $_POST['_product_weight']);
-		}
 
-		// Productos - Fotogalería: _fotogaleria_meta
-		if(isset($_POST['_fotogaleria_meta'])){
-			update_post_meta($post_id, '_fotogaleria_meta', $_POST['_fotogaleria_meta']);
-		}else{
-			delete_post_meta($post_id, '_fotogaleria_meta');
-		}
 
 		if(!empty($_FILES) and isset($_FILES['_fotogaleria'])){
 
@@ -245,12 +253,5 @@ DISTRIBUIDOR;
 			}
 		}
 
-		// Distribuidores: _distribuidor_info
-		if(isset($_POST['_distribuidor_info'])){
-			if( !wp_verify_nonce($_POST['_distribuidor_info_nonce'], __FILE__)){
-				return $post_id;
-			}
-			update_post_meta($post_id, '_distribuidor_info', $_POST['_distribuidor_info']);
-		}
 
 	});

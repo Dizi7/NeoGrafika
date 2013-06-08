@@ -1,9 +1,12 @@
 <?php
 
+
 // CUSTOM POST TYPES /////////////////////////////////////////////////////////////////
 
+
 	add_action('init', function(){
-		// post type productos
+
+	// post type productos
 		$labels = array(
 			'name'          => 'Productos',
 			'singular_name' => 'Producto',
@@ -28,13 +31,14 @@
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
-			'menu_position'      => null,
+			'menu_position'      => 5,
 			'taxonomies'         => array('category'),
 			'supports'           => array( 'title', 'editor', 'thumbnail' )
 		);
 		register_post_type('producto', $args);
 
-		// post type productos
+
+	// post type distribuidor
 		$labels = array(
 			'name'          => 'Distribuidores',
 			'singular_name' => 'Distribuidor',
@@ -59,8 +63,9 @@
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
-			'menu_position'      => null,
+			'menu_position'      => 6,
 			'supports'           => array( 'title' )
 		);
 		register_post_type('distribuidor', $args);
+
 	});

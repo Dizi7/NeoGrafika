@@ -1,13 +1,17 @@
 <?php
 
-// FRONT END SCRIPTS AND STYLES //////////////////////////////////////////////////////
 
 	// path a los directorios de javascript y css
 	define( 'JSPATH', get_template_directory_uri() . '/js/' );
 	define( 'CSSPATH', get_template_directory_uri() . '/css/' );
 	define( 'THEMEPATH', get_template_directory_uri() . '/' );
 
-	// front end styles and scripts
+
+
+// FRONT END SCRIPTS AND STYLES //////////////////////////////////////////////////////
+
+
+
 	add_action( 'wp_enqueue_scripts', function(){
 
 		// scripts
@@ -38,6 +42,13 @@
 		wp_enqueue_style('fontello-fonts', THEMEPATH .'fonts/fontello.css');
 	});
 
+
+
+// ADMIN SCRIPTS AND STYLES //////////////////////////////////////////////////////////
+
+
+
+	// Admin scripts and styles
 	add_action( 'admin_enqueue_scripts', function(){
 
 		// scripts
@@ -53,23 +64,38 @@
 		wp_enqueue_style('admin-css', get_template_directory_uri().'/admin/css/admin.css');
 	});
 
+
+
 // REMOVE ADMIN BAR FOR NON ADMINS ///////////////////////////////////////////////////
+
+
 
 	add_filter('show_admin_bar' ,function($content){
 		return ( current_user_can("administrator") ) ? $content : false;
 	});
 
+
+
 // POST TYPES, METABOXES AND TAXONOMIES //////////////////////////////////////////////
+
+
 
 	require_once('inc/metaboxes.php');
 
+
 	require_once('inc/post-types.php');
+
 
 	require_once('inc/queries.php');
 
+
 	require_once('inc/pages.php');
 
+
+
 // POST THUMBNAILS SUPPORT ///////////////////////////////////////////////////////////
+
+
 
 	if(function_exists( 'add_theme_support' )){
 		add_theme_support( 'post-thumbnails' );
@@ -79,23 +105,29 @@
 		add_image_size( 'producto_thumb', 270, 220, true );
 	}
 
+
+
 // REMOVE ELEMENTS FROM DASHBOARD MENU ///////////////////////////////////////////////
+
+
 
 	add_action( 'admin_menu', function(){
 		$remove = array(__('Posts'),__('Tools'),__('Comments'));
 		remove_dashboard_menus($remove);
 	});
 
+
+
 // HELPER FUNCTIONS AND CLASSES //////////////////////////////////////////////////////
 
+
+
 	/**
-	 *
 	 * Regresa las imagenes que estan ligadas al post_id
 	 *
 	 * @param post_id
 	 * @return ID
 	 * @return meta_value
-	 *
 	 */
 	function scrub_get_attachment_images($post_id){
 		global $wpdb;
@@ -108,6 +140,14 @@
 		);
 	}
 
+
+	/**
+	 * Regresa los distribuidores y metadata
+	 *
+	 * @param post_id
+	 * @return ID
+	 * @return meta_value
+	 */
 	function scrub_get_distribuidores(){
 		global $wpdb;
 		return $wpdb->get_results(
@@ -122,6 +162,7 @@
 							AND post_status = 'publish';", OBJECT
 		);
 	}
+
 
 	/**
 	 *
@@ -140,16 +181,11 @@
 	add_action('wp_ajax_nopriv_delete_attachment', 'delete_attachment');
 
 
+
+
 	function set_slider_image(){
 		global $wpdb;
-
 		$attachment = ( isset($_POST['attachment']) ) ? $_POST['attachment'] : false;
-
-		file_put_contents(
-			'/var/www/neografika/wp-content/themes/neografika/php.log',
-			var_export( $attachment, true )
-		);
-
 		echo json_encode($attachment);
 	}
 	add_action('wp_ajax_set_slider_image', 'set_slider_image');
@@ -164,8 +200,10 @@
 	 *
 	 */
 	function remove_dashboard_menus($remove){
-			global $menu; end($menu);
-		while(prev($menu)){
+
+		global $menu; end($menu);
+
+		while( prev($menu) ) {
 			$value = explode(' ',$menu[key($menu)][0]);
 			if(in_array($value[0] != NULL ? $value[0] : '' , $remove)){
 				unset( $menu[key($menu)] );
