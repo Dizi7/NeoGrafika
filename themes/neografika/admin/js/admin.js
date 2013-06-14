@@ -16,9 +16,9 @@
 
 
 
-		$('.input-img').on('change', function(){
+		$('.input-img').live('change', function(){
 			var container = $(this).siblings('.fotogaleria');
-			mq_display_file(this, container);
+			mq_display_file( this, container );
 		});
 
 
@@ -27,7 +27,7 @@
 
 
 
-		$('.eliminar-img').live('click', function(e){
+		$('.eliminar-img').live('click', function (e) {
 			e.preventDefault();
 
 			var $this      = $(this),
@@ -49,7 +49,7 @@
 
 
 
-		$('#image-add-toggle').live('click', function(e){
+		$('#image-add-toggle').live('click', function (e) {
 			e.preventDefault();
 
 			$(this).before(
@@ -68,7 +68,7 @@
 
 
 
-		var save_attachment = function(attachment){
+		var save_attachment = function (attachment) {
 
 			var jqxhr = $.ajax({
 				type: 'POST',
@@ -79,13 +79,13 @@
 				}
 			});
 
-			jqxhr.done(function (data, textStatus, jqXHR){
+			jqxhr.done(function (data, textStatus, jqXHR) {
 				display_image(data);
 			});
 		};
 
 
-		function display_image(json){
+		function display_image (json) {
 			console.log(json);
 			var imagen = $('<img />', {
 				src: json.guid
@@ -101,7 +101,7 @@
 
 		var file_frame, attachment;
 
-		$('.upload_image_button').live('click', function (e){
+		$('.upload_image_button').live('click', function (e) {
 
 			e.preventDefault();
 
@@ -141,7 +141,7 @@
 		 * @param: container jQuery para desplegar la imagen
 		 *
 		 **/
-		function mq_display_file(input, container){
+		function mq_display_file (input, container) {
 			var reader = new FileReader();
 			reader.onload = function(e){
 				container.attr('style', 'background: url('+ e.target.result +') no-repeat center center ');
@@ -155,7 +155,7 @@
 		 * Reset/Clean: input[type='file']
 		 *
 		 **/
-		function mq_reset_file_input(input){
+		function mq_reset_file_input (input) {
 			var replacement = input.val('').clone( true );
 			input.replaceWith( replacement );
 		}
@@ -167,7 +167,7 @@
 		 * @param post_id
 		 *
 		 **/
-		function delete_attachment_by_id(post_id){
+		function delete_attachment_by_id (post_id) {
 			jQuery.ajax({
 				type: 'POST',
 				url: ajax_url,

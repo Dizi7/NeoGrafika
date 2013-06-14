@@ -3,23 +3,26 @@
 // CUSTOM METABOXES //////////////////////////////////////////////////////////////////
 
 
+
 	add_action('add_meta_boxes', function(){
 
 		// Productos
-		add_meta_box('producto_precio_meta', 'Información del Producto', 'producto_metadata_setup', 'producto', 'side', 'low');
-		add_meta_box('producto_is_featured', 'Featured Product', 'producto_meta_featured_setup', 'producto', 'side', 'high');
+		add_meta_box('producto_precio_meta', 'Información del Producto', 'producto_metadata_setup', 'productos', 'side', 'low');
+		add_meta_box('producto_is_featured', 'Featured Product', 'producto_meta_featured_setup', 'productos', 'side', 'high');
+		add_meta_box('producto_fotogaleria', 'Fotogalería', 'producto_fotogaleria_setup', 'productos', 'normal', 'default');
 
 		// Distribuidores
-		add_meta_box('distribuidor_info', 'Información Distribuidor', 'show_distribuidor_metabox', 'distribuidor', 'normal', 'low');
+		add_meta_box('distribuidor_info', 'Información Distribuidor', 'show_distribuidor_metabox', 'distribuidores', 'normal', 'low');
 
 	});
+
 
 
 // CUSTOM METABOXES CALLBACK FUNCTIONS ///////////////////////////////////////////////
 
 
 
-	// Producto: Precio, Identificador, Medidas, Peso
+	// Productos: Precio, Identificador, Medidas, Peso
 	function producto_metadata_setup($post){
 
 		$meta = get_post_meta($post->ID, '_product_meta', true);
@@ -55,18 +58,16 @@ METABOX;
 
 
 	// Producto: Incluir foto galeria
-	function producto_meta_fotogaleria_setup($post){
+	function producto_fotogaleria_setup($post){
 
 		wp_nonce_field(__FILE__, '_fotogaleria_meta_nonce');
-		//echo '<input type="hidden" name="_fotogaleria_meta_nonce" value="' . wp_create_nonce(__FILE__) . '" />';
 
-		$fotogaleria = get_post_meta($post->ID, '_fotogaleria_meta', true);
-		$checked = ($fotogaleria) ? 'checked' : '';
+		$checked = (get_post_meta($post->ID, '_fotogaleria_meta', true)) ? 'checked' : '';
 
 		echo "<div class='inside fotogaleria_container'>";
-		echo "<p><input type='checkbox' name='_fotogaleria_meta' $checked /> Incluir fotogaleria</p>";
+		echo "<p><input type='checkbox' name='_fotogaleria_meta' value='true' $checked /> Incluir fotogaleria</p>";
 
-		if( $images = scrub_get_attachment_images($post->ID) ){
+		if( $images = get_fotogaleria_images($post->ID) ){
 			foreach( $images as $image ) {
 				display_image_field( $image );
 			} ?>
@@ -195,6 +196,13 @@ DISTRIBUIDOR;
 			update_post_meta($post_id, '_product_meta', $_POST['_product_meta']);
 		}
 
+		// Productos incluir fotogalería?
+		if ( isset($_POST['_fotogaleria_meta'])) {
+			update_post_meta($post_id, '_fotogaleria_meta', $_POST['_fotogaleria_meta']);
+		} else {
+			delete_post_meta($post_id, '_fotogaleria_meta');
+		}
+
 
 		// Producto aparece en el home?
 		if ( isset($_POST['_product_featured']) ) {
@@ -213,8 +221,7 @@ DISTRIBUIDOR;
 		}
 
 
-
-		if(!empty($_FILES) and isset($_FILES['_fotogaleria'])){
+		if( !empty($_FILES) and isset($_FILES['_fotogaleria']) ){
 
 			if( !wp_verify_nonce($_POST['_fotogaleria_meta_nonce'], __FILE__)){
 				return $post_id;
@@ -224,6 +231,8 @@ DISTRIBUIDOR;
 
 			foreach($_FILES['_fotogaleria']['name'] as $key => $value){
 				if($uploaded_files['error'][$key] == 0){
+
+					global $wpdb;
 
 					$upload     = wp_upload_bits($uploaded_files['name'][$key], null, file_get_contents($uploaded_files['tmp_name'][$key]));
 					$filetype   = wp_check_filetype( basename($upload['file']), null );
@@ -245,10 +254,18 @@ DISTRIBUIDOR;
 
 					$attach_data = wp_generate_attachment_metadata( $attach_id, $upload['file'] );
 					wp_update_attachment_metadata( $attach_id, $attach_data );
-					// set_post_thumbnail( $post_id, $attach_id );
+
+
+					$wpdb->update(
+						'wp_posts',
+						array('post_content_filtered' => 'fotogaleria'),
+						array('ID' => $attach_id),
+						array('%s'),
+						array('%d')
+					);
+
 				}
 			}
 		}
-
 
 	});

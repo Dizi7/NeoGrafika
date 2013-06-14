@@ -25,7 +25,7 @@
 					INNER JOIN wp_term_relationships AS tr ON ID = tr.object_id
 					INNER JOIN wp_term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id
 					INNER JOIN wp_terms AS t ON tt.term_id = t.term_id
-						WHERE post_status = 'publish';", OBJECT
+						WHERE post_type = 'productos' AND post_status = 'publish';", OBJECT
 		);
 	}
 
@@ -48,7 +48,7 @@
 				INNER JOIN wp_terms as t
 					ON t.term_id = tt.term_id
 					WHERE t.slug = '$slug'
-						AND post_type   = 'producto'
+						AND post_type   = 'productos'
 						AND post_status = 'publish'", OBJECT
 		);
 		return $result;

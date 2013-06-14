@@ -35,7 +35,7 @@
 			'taxonomies'         => array('category'),
 			'supports'           => array( 'title', 'editor', 'thumbnail' )
 		);
-		register_post_type('producto', $args);
+		register_post_type('productos', $args);
 
 
 	// post type distribuidor
@@ -66,6 +66,6 @@
 			'menu_position'      => 6,
 			'supports'           => array( 'title' )
 		);
-		register_post_type('distribuidor', $args);
+		register_post_type('distribuidores', $args);
 
 	});

@@ -167,20 +167,19 @@
 
 
 	/**
-	 * Regresa las imagenes que estan ligadas al post_id
-	 *
+	 * Regresa las imagenes de la fotogaleria
 	 * @param post_id
-	 * @return ID
-	 * @return meta_value
+	 * @return array(ID, meta_value as dir) | false
 	 */
-	function scrub_get_attachment_images($post_id){
+	function get_fotogaleria_images( $post_id ) {
 		global $wpdb;
 		return $wpdb->get_results(
 			"SELECT ID, meta_value AS dir FROM wp_posts
 				INNER JOIN wp_postmeta
 					ON ID = post_id
-						AND meta_key    = '_wp_attached_file'
-						AND post_parent = '$post_id';", OBJECT
+						AND meta_key = '_wp_attached_file'
+							WHERE post_parent = '$post_id'
+								AND post_content_filtered = 'fotogaleria';", OBJECT
 		);
 	}
 
@@ -188,12 +187,11 @@
 
 	/**
 	 * Regresa los distribuidores y metadata
-	 *
 	 * @param post_id
 	 * @return ID
 	 * @return meta_value
 	 */
-	function scrub_get_distribuidores(){
+/*	function scrub_get_distribuidores(){
 		global $wpdb;
 		return $wpdb->get_results(
 			"SELECT ID,
@@ -203,17 +201,17 @@
 					INNER JOIN wp_postmeta
 						ON ID = post_id
 						AND meta_key = '_distribuidor_info'
-							WHERE post_type = 'distribuidor'
+							WHERE post_type = 'distribuidores'
 							AND post_status = 'publish';", OBJECT
 		);
-	}
+	}*/
 
 
 	/**
 	 * Regresa las imagenes del slider
 	 *
 	 */
-	function get_slider_images(){
+/*	function get_slider_images(){
 		global $wpdb;
 		return $wpdb->get_results(
 			"SELECT * FROM wp_posts
@@ -221,7 +219,7 @@
 					ON ID = post_id
 						WHERE meta_key = '_main_slider';", OBJECT
 		);
-	}
+	}*/
 
 
 
@@ -249,7 +247,7 @@
 	 */
 	function set_slider_image(){
 		$attachment = ( isset($_POST['attachment']) ) ? $_POST['attachment'] : false;
-		$result = update_post_meta($attachment['id'], '_main_slider', 'true');
+		$result     = update_post_meta($attachment['id'], '_main_slider', 'true');
 		echo json_encode($attachment);
 	}
 	add_action('wp_ajax_set_slider_image', 'set_slider_image');
