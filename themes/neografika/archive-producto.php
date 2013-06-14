@@ -1,4 +1,10 @@
-<?php get_header(); ?>
+<?php
+
+	/**
+	 * Neografika: Archive producto
+	 */
+
+	get_header(); ?>
 
 	<!-- Begin Light Wrapper -->
 	<div class="light-wrapper">
@@ -33,11 +39,11 @@
 							<?php $posts = get_posts_by_term_slug($categorie->slug); ?>
 							<?php foreach ($posts as $index => $product) : ?>
 								<li class="touchcarousel-item item-block">
-									<?php
-									echo ( has_post_thumbnail($product->ID) )
-										? get_the_post_thumbnail( $product->ID, 'producto_thumb' )
-										: '<img src="http://placehold.it/270x220" width="270" height="220" alt="">'; ?>
-
+									<?php if ( has_post_thumbnail($product->ID) ) {
+										the_post_thumbnail( $product->ID, 'producto_thumb' );
+									} else {
+										echo '<img src="http://placehold.it/270x220" width="270" height="220" alt="">';
+									} ?>
 									<a href="style/images/art/full1.jpg" class="fancybox-media" rel="web-design" data-title-id="title-<?= $product->ID ?>">
 										<span class="link"></span>
 									</a>

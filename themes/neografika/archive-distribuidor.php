@@ -7,7 +7,7 @@
 
 			<h1 class="aligncenter">Distribuidores Neografika</h1><br/>
 
-			<?php $distribuidores = scrub_get_distribuidores();
+			<?php $distribuidores = get_distribuidores();
 			foreach ($distribuidores as $index => $distribuidor) {
 				$meta = unserialize($distribuidor->meta);
 				$last = ( ($index+1)%3 ) ? '' : 'last'; ?>
@@ -20,6 +20,7 @@
 						<?= $meta['calle'] ?><br/>
 						<strong>Contacto: </strong><?= $meta['contacto'] ?><br/>
 						<strong>Colonia: </strong><?= $meta['colonia'] ?><br/>
+						<strong>Estado: </strong><?= $meta['estado'] ?><br/>
 						<strong>CP: </strong><?= $meta['postal'] ?><br/>
 						<strong>Teléfono: </strong><?= $meta['telefono'] ?><br/>
 						<strong>Website: </strong><a href="<?= $meta['website'] ?>"><?= $meta['website'] ?></a>

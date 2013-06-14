@@ -1,11 +1,11 @@
 <?php
 
 
-	// path a los directorios de javascript y css
 	define( 'JSPATH', get_template_directory_uri() . '/js/' );
-	define( 'CSSPATH', get_template_directory_uri() . '/css/' );
-	define( 'THEMEPATH', get_template_directory_uri() . '/' );
 
+	define( 'CSSPATH', get_template_directory_uri() . '/css/' );
+
+	define( 'THEMEPATH', get_template_directory_uri() . '/' );
 
 
 // FRONT END SCRIPTS AND STYLES //////////////////////////////////////////////////////
@@ -94,6 +94,9 @@
 
 
 	require_once('inc/pages.php');
+
+
+	require_once('inc/taxonomies.php');
 
 
 
@@ -191,7 +194,7 @@
 	 * @return ID
 	 * @return meta_value
 	 */
-/*	function scrub_get_distribuidores(){
+	function get_distribuidores(){
 		global $wpdb;
 		return $wpdb->get_results(
 			"SELECT ID,
@@ -201,17 +204,17 @@
 					INNER JOIN wp_postmeta
 						ON ID = post_id
 						AND meta_key = '_distribuidor_info'
-							WHERE post_type = 'distribuidores'
+							WHERE post_type = 'distribuidor'
 							AND post_status = 'publish';", OBJECT
 		);
-	}*/
+	}
 
 
 	/**
 	 * Regresa las imagenes del slider
 	 *
 	 */
-/*	function get_slider_images(){
+	function get_slider_images(){
 		global $wpdb;
 		return $wpdb->get_results(
 			"SELECT * FROM wp_posts
@@ -219,7 +222,7 @@
 					ON ID = post_id
 						WHERE meta_key = '_main_slider';", OBJECT
 		);
-	}*/
+	}
 
 
 
@@ -285,6 +288,13 @@
 				unset( $menu[key($menu)] );
 			}
 		}
+	}
+
+	function distribuidor_data($title, $key){
+		if ( !isset($meta[$key]) ){
+			return false;
+		}
+		echo "<strong>$title: </strong>{$meta[$key]}<br/>";
 	}
 
 

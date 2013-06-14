@@ -7,12 +7,12 @@
 	add_action('add_meta_boxes', function(){
 
 		// Productos
-		add_meta_box('producto_precio_meta', 'Información del Producto', 'producto_metadata_setup', 'productos', 'side', 'low');
-		add_meta_box('producto_is_featured', 'Featured Product', 'producto_meta_featured_setup', 'productos', 'side', 'high');
-		add_meta_box('producto_fotogaleria', 'Fotogalería', 'producto_fotogaleria_setup', 'productos', 'normal', 'default');
+		add_meta_box('producto_precio_meta', 'Información del Producto', 'producto_metadata_setup', 'producto', 'side', 'low');
+		add_meta_box('producto_is_featured', 'Featured Product', 'producto_meta_featured_setup', 'producto', 'side', 'high');
+		add_meta_box('producto_fotogaleria', 'Fotogalería', 'producto_fotogaleria_setup', 'producto', 'normal', 'default');
 
 		// Distribuidores
-		add_meta_box('distribuidor_info', 'Información Distribuidor', 'show_distribuidor_metabox', 'distribuidores', 'normal', 'low');
+		add_meta_box('distribuidor_info', 'Información Distribuidor', 'show_distribuidor_metabox', 'distribuidor', 'normal', 'low');
 
 	});
 
@@ -159,7 +159,7 @@ IMAGE;
 
 		<div class="metaField">
 			<label for="Email" class="metaLabel">Email</label>
-			<input type="text" name="_distribuidor_info[Email]" id="Email" class="distribuidor" value="$Email" />
+			<input type="text" name="_distribuidor_info[Email]" id="Email" class="distribuidor" value="$email" />
 		</div>
 
 

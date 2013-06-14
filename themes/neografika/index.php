@@ -13,11 +13,12 @@
 					<li><a class="active" href="#" data-filter="*">Todos</a></li>
 
 					<?php $categories = get_categories(
-							array(
-								'type'     => 'producto',
-								'taxonomy' => 'category',
-								'exclude'  => 1
-							)); ?>
+						array(
+							'type'     => 'productos',
+							'taxonomy' => 'category',
+							'exclude'  => 1
+						)
+					); ?>
 					<?php foreach ($categories as $categorie) : ?>
 						<li><a href="#" data-filter=".<?= $categorie->name ?>"><?= $categorie->name ?></a></li>
 					<?php endforeach; ?>
@@ -32,10 +33,14 @@
 
 				<ul class="items col4">
 
-					<?php $products = get_products_data();  // ID, title, content, subtitle, price, sku, size, category
+					<?php $products = get_products_data();
 						foreach ($products as $index => $product) {
-							$product->price = ($product->price) ? $product->price : 0;
-							?>
+
+							$precio = isset($product->meta['precio']) ? $product->meta['precio'] : '';
+							$sku    = isset($product->meta['sku'])    ? $product->meta['sku']    : '';
+							$size   = isset($product->meta['size'])   ? $product->meta['size']   : '';
+							$weight = isset($product->meta['weight']) ? $product->meta['weight'] : ''; ?>
+
 							<li class="item <?= $product->category ?> web" data-callback="callPortfolioScripts();"
 								data-detailcontent='<div class="content">
 														<div id="myCarousel" class="carousel slide">
@@ -59,8 +64,8 @@
 														<h2><?= _e($product->title) ?></h2>
 														<ul class="item-info">
 															<li><span class="lite1">Categoría:</span> <?= $product->category ?></li>
-															<li><span class="lite1">Precio:</span> $<?= number_format($product->price, 2, '.', ',') ?></li>
-															<li><span class="lite1">Medidas:</span> <?= $product->size ?></li>
+															<li><span class="lite1">Precio:</span> $<?= number_format($precio, 2, '.', ',') ?></li>
+															<li><span class="lite1">Medidas:</span> <?= $size ?></li>
 														</ul>
 														<p><?= _e($product->content) ?></p>
 														<p class="disclaimer">

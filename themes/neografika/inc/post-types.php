@@ -27,15 +27,15 @@
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'producto' ),
+			'rewrite'            => array( 'slug' => 'coleccion' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 5,
-			'taxonomies'         => array('category'),
+			'taxonomies'         => array( 'category' ),
 			'supports'           => array( 'title', 'editor', 'thumbnail' )
 		);
-		register_post_type('productos', $args);
+		register_post_type('producto', $args);
 
 
 	// post type distribuidor
@@ -59,13 +59,13 @@
 			'show_ui'            => true,
 			'show_in_menu'       => true,
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'distribuidor' ),
+			'rewrite'            => array( 'slug' => 'distribuidores' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,
 			'menu_position'      => 6,
 			'supports'           => array( 'title' )
 		);
-		register_post_type('distribuidores', $args);
+		register_post_type('distribuidor', $args);
 
 	});
