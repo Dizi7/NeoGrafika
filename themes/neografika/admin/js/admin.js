@@ -80,12 +80,18 @@
 			});
 
 			jqxhr.done(function (data, textStatus, jqXHR){
-				console.log('done');
-				console.log(data);
-				console.log(textStatus);
-				console.log(jqXHR);
+				display_image(data);
 			});
 		};
+
+
+		function display_image(json){
+			console.log(json);
+			var imagen = $('<img />', {
+				src: json.guid
+			});
+			$('#slider-images').append(imagen);
+		}
 
 
 

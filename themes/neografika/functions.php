@@ -65,6 +65,7 @@
 
 		// styles
 		wp_enqueue_style('admin-css', get_template_directory_uri().'/admin/css/admin.css');
+
 	});
 
 
@@ -74,7 +75,7 @@
 
 
 	add_filter('show_admin_bar' ,function($content){
-		return ( current_user_can("administrator") ) ? $content : false;
+		return ( current_user_can('administrator') ) ? $content : false;
 	});
 
 
@@ -224,7 +225,6 @@
 
 
 
-
 	/**
 	 * Ajax callback function para eliminar attachments
 	 *
@@ -290,8 +290,8 @@
 	}
 
 
-	function send_new_comment_mail(){
 
+	function send_new_comment_mail(){
 		$message = (isset($_POST['message'])) ? $_POST['message'] : '';
 		$name    = (isset($_POST['name']))    ? $_POST['name']    : '';
 		$email   = (isset($_POST['email']))   ? $_POST['email']   : '';
@@ -317,6 +317,7 @@
 	}
 	add_action('wp_ajax_send_new_comment_mail', 'send_new_comment_mail');
 	add_action('wp_ajax_nopriv_send_new_comment_mail', 'send_new_comment_mail');
+
 
 	function set_html_content_type(){
 		return 'text/html';
