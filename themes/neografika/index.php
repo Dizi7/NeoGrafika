@@ -19,16 +19,11 @@
 							'exclude'  => 1
 						)
 					); ?>
+
 					<?php foreach ($categories as $categorie) : ?>
 						<li><a href="#" data-filter=".<?= $categorie->name ?>"><?= $categorie->name ?></a></li>
 					<?php endforeach; ?>
 
-					<!--
-					<li><a href="#" data-filter=".web">Web Design</a></li>
-					<li><a href="#" data-filter=".graphic">Graphic</a></li>
-					<li><a href="#" data-filter=".artwork">Artwork</a></li>
-					<li><a href="#" data-filter=".video">Video</a></li>
-					-->
 				</ul>
 
 				<ul class="items col4">
@@ -64,7 +59,7 @@
 														<h2><?= _e($product->title) ?></h2>
 														<ul class="item-info">
 															<li><span class="lite1">Categoría:</span> <?= $product->category ?></li>
-															<li><span class="lite1">Precio:</span> $<?= number_format($precio, 2, '.', ',') ?></li>
+															<li><span class="lite1">Precio:</span> $<?= number_format((int)$precio, 2, '.', ',') ?></li>
 															<li><span class="lite1">Medidas:</span> <?= $size ?></li>
 														</ul>
 														<p><?= _e($product->content) ?></p>

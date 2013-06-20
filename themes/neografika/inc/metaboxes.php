@@ -27,7 +27,6 @@
 
 		$meta = get_post_meta($post->ID, '_product_meta', true);
 
-
 		$precio = isset($meta['precio']) ? $meta['precio'] : '';
 		$sku    = isset($meta['sku'])    ? $meta['sku']    : '';
 		$size   = isset($meta['size'])   ? $meta['size']   : '';
