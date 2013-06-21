@@ -1,5 +1,6 @@
 <?php
 
+
 	/**
 	 *
 	 * Regresa los productos con meta data y categoria
@@ -51,4 +52,15 @@
 						AND post_status = 'publish'", OBJECT
 		);
 		return $result;
+	}
+
+
+
+	function get_product_slider_images($post_id){
+		global $wpdb;
+		return $wpdb->get_results(
+			"SELECT ID, meta_value AS path FROM wp_posts
+				INNER JOIN wp_postmeta AS pm ON ID = pm.post_id AND meta_key = '_wp_attached_file'
+					WHERE post_content_filtered = 'fotogaleria' AND post_parent = '$post_id';"
+		);
 	}

@@ -75,7 +75,7 @@ METABOX;
 			</h4>
 		<?php } else { ?>
 			<div>
-				<input type="file" class="" ="input-img" name="_fotogaleria[]">
+				<input type="file" class="input-img" name="_fotogaleria[]">
 				<input type="submit" class="button eliminar-img" data-post_id="" value="Eliminar">
 				<div class="fotogaleria"></div>
 			</div>

@@ -34,22 +34,13 @@
 							$precio = isset($product->meta['precio']) ? $product->meta['precio'] : '';
 							$sku    = isset($product->meta['sku'])    ? $product->meta['sku']    : '';
 							$size   = isset($product->meta['size'])   ? $product->meta['size']   : '';
-							$weight = isset($product->meta['weight']) ? $product->meta['weight'] : ''; ?>
+							$weight = isset($product->meta['weight']) ? $product->meta['weight'] : '';
+							$images = product_slider_images($product->ID); ?>
 
 							<li class="item <?= $product->category ?> web" data-callback="callPortfolioScripts();"
 								data-detailcontent='<div class="content">
 														<div id="myCarousel" class="carousel slide">
-															<div class="carousel-inner">
-																<div class="active item">
-																	<img alt="" width="100%" src="<?php bloginfo('template_directory') ?>/images/art/ds5-1.jpg">
-																	<a href="<?php bloginfo('template_directory') ?>/images/art/ds5-1.jpg" class="fancybox-media" rel="item-5"></a>
-																</div>
-																<div class="item">
-																	<img alt="" width="100%" src="<?php bloginfo('template_directory') ?>/images/art/ds5-2.jpg">
-																	<a href="<?php bloginfo('template_directory') ?>/images/art/ds5-2.jpg" class="fancybox-media" rel="item-5"></a>
-																</div>
-															</div>
-
+															<div class="carousel-inner"><?= $images ?></div>
 															<a class="carousel-control left" href="#myCarousel" data-slide="prev"></a>
 															<a class="carousel-control right" href="#myCarousel" data-slide="next"></a>
 														</div>

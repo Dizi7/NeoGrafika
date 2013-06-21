@@ -110,8 +110,21 @@
 
 	if(function_exists( 'add_image_size' )){
 		add_image_size( 'producto_thumb', 270, 220, true );
+		add_image_size( 'producto_fotogaleria', 770, 420, true );
 	}
 
+
+	add_filter( 'intermediate_image_sizes', function($sizes) {
+		$type = get_post_type($_REQUEST['post_id']);
+		foreach( $sizes as $key => $value ){
+			if( $type == 'producto' ){
+				if( $value != 'producto_thumb' and $value != 'producto_fotogaleria' ){
+					unset( $sizes[$key] );
+				}
+			}
+		}
+		return $sizes;
+	});
 
 
 // REMOVE ELEMENTS FROM DASHBOARD MENU ///////////////////////////////////////////////
@@ -130,7 +143,7 @@
 
 
 	add_action('admin_menu', function () {
-	    add_menu_page('slider', 'Neografika', 'administrator', 'main-slider', 'display_slider', '', 81 );
+		add_menu_page('slider', 'Neografika', 'administrator', 'main-slider', 'display_slider', '', 81 );
 	});
 
 	function display_slider(){
@@ -313,7 +326,7 @@
 		add_filter( 'wp_mail_content_type', 'set_html_content_type' );
 
 		if( $name ){
-		   	wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
+			wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
 				   'Fecha: '.$date.'<br />Nombre: '. $name .'<br />Email: '. $email .'<br />Mensaje:<br /><br />'. $message, $headers );
 		}else{
 			wp_mail( 'scrub.mx@gmail.com', 'Nuevo Mensaje - NeoGrafika.com',
@@ -329,4 +342,25 @@
 
 	function set_html_content_type(){
 		return 'text/html';
+	}
+
+
+
+	function product_slider_images($post_id){
+
+		$images  = get_product_slider_images($post_id);
+		$result  = "";
+
+		foreach ($images as $index => $image) {
+
+			$active = ( $index == 0 ) ? 'active' : '';
+			$image_attributes = wp_get_attachment_image_src($image->ID, 'producto_fotogaleria');
+
+			$result .= '<div class="item '.$active.'">';
+			$result .= 	'<img src="'.$image_attributes[0].'">';
+			$result .= 	'<a href="#" rel="item-'.$image->ID.'"></a>';
+			$result .= '</div>';
+
+		}
+		return $result;
 	}

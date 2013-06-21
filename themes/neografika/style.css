@@ -2833,3 +2833,7 @@ media_tag_5 {media_subcode:5}
 .distribuidor p{
     padding-left: 10px;
 }
+
+.item img{
+    width: 100%;
+}
