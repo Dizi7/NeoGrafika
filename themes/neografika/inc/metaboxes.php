@@ -179,9 +179,9 @@ DISTRIBUIDOR;
 
 	add_action('save_post', function($post_id){
 
-		// if ( !current_user_can('edit_page', $post_id) ) {
-		// 	return $post_id;
-		// }
+		if ( !current_user_can('edit_page', $post_id) ) {
+			return $post_id;
+		}
 
 		if ( defined('DOING_AUTOSAVE') and DOING_AUTOSAVE ) {
 			return $post_id;
