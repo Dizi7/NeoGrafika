@@ -1,7 +1,7 @@
 <div class="bannercontainer">
 	<div class="banner">
 		<ul>
-			<?php $images = 	();
+			<?php $images = get_slider_images();
 
 			foreach ($images as $image) {
 				echo "<li data-transition='fade'>";
