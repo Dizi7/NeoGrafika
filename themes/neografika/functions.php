@@ -132,7 +132,7 @@
 
 
 	add_action( 'admin_menu', function(){
-		$remove = array(__('Posts'),__('Tools'),__('Comments'));
+		$remove = array(__('Posts'),__('Comments'));
 		remove_dashboard_menus($remove);
 	});
 
