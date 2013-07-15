@@ -36,3 +36,7 @@ div.input-group label { display: block; float: left; width: 120px; font-size: 12
 
 .producto-meta label{ margin-top: 5px; }
 .producto-meta input{ margin-bottom: 10px; }
+
+#slider-images{ padding-top: 25px; }
+#slider-images .slider-preview{ width: 600px; height: 250px; margin-bottom: 10px; cursor: pointer; }
+#slider-images .slider-preview:hover{ opacity: 0.8 };

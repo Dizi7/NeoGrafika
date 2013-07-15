@@ -65,7 +65,6 @@
 
 		// styles
 		wp_enqueue_style('admin-css', get_template_directory_uri().'/admin/css/admin.css');
-
 	});
 
 
@@ -111,6 +110,7 @@
 	if(function_exists( 'add_image_size' )){
 		add_image_size( 'producto_thumb', 270, 220, true );
 		add_image_size( 'producto_fotogaleria', 770, 420, true );
+		add_image_size( 'main_slider', 1000, 400, true );
 	}
 
 
@@ -148,33 +148,56 @@
 
 	function display_slider(){
 
-		add_settings_section('slider_section', 'Página Principal', '', __FILE__);
+		add_settings_section('slider_section', 'Imagenes del slider', '', __FILE__);
 
-		add_settings_field('imagenes', 'Imágenes del Slider', 'slider_callback', __FILE__, 'slider_section'); ?>
+		add_settings_field('imagenes', 'Selecciona las imagenes:', 'slider_callback', __FILE__, 'slider_section'); ?>
 
 		<div class="wrap">
 			<?php screen_icon('generic'); ?>
 			<h2>Configuración del Tema</h2>
 			<form method="POST" action="options.php">
-				<?php settings_fields('votacion_iberocine'); ?>
+				<?php settings_fields('imagenes'); ?>
 				<?php do_settings_sections(__FILE__); ?>
 			</form>
+
 			<div id="slider-images">
-				<?php $images = get_slider_images();
+				<?php
+				$images = get_slider_images();
+				$direcotry = get_bloginfo('template_url');
 					foreach ($images as $image) {
-						echo "<img src='$image->guid' />";
-					}?>
+						echo "<img src='$image->guid' class='slider-preview' data-id='$image->ID'/><br />";
+					} ?>
 			</div>
 		</div><?php
 	}
 
 	function slider_callback(){
 		$seleccion = get_option('fecha_seleccion');
-		echo "<button class='button upload_image_button'
-					data-uploader_title='Imágenes del Slider'
-					data-uploader_button_text='Seleccionar'>
-				Seleccionar imagen</button>";
+		echo "<button class='button upload_image_button' data-uploader_title='Gallery' data-uploader_button_text='Seleccionar'>Seleccionar imagen</button>";
 	}
+
+
+
+// SOLO MOSTRAR IMAGENES DEL SLIDER EN FILE UPLOAD FRAME /////////////////////////////
+
+
+
+	add_filter( 'pre_get_posts', function( $query ){
+
+		if( is_admin()
+			and isset($_SERVER['HTTP_REFERER'])
+			and strpos($_SERVER['HTTP_REFERER'], 'page=main-slider') !== false
+			and $_SERVER['REQUEST_URI'] == '/wp-admin/admin-ajax.php' ){
+
+			$args = array(array(
+				'key'     => '_main_slider',
+				'value'   => array('true'),
+				'compare' => 'IN'
+			));
+
+			$query->set('meta_query', $args);
+		}
+	});
 
 
 
@@ -233,7 +256,8 @@
 			"SELECT * FROM wp_posts
 				INNER JOIN wp_postmeta
 					ON ID = post_id
-						WHERE meta_key = '_main_slider';", OBJECT
+						WHERE meta_key = '_main_slider'
+							ORDER BY ID;", OBJECT
 		);
 	}
 
