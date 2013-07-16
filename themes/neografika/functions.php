@@ -115,11 +115,13 @@
 
 
 	add_filter( 'intermediate_image_sizes', function($sizes) {
-		$type = get_post_type($_REQUEST['post_id']);
-		foreach( $sizes as $key => $value ){
-			if( $type == 'producto' ){
-				if( $value != 'producto_thumb' and $value != 'producto_fotogaleria' ){
-					unset( $sizes[$key] );
+		if (isset($_REQUEST['post_id']) ) {
+			$type = get_post_type($_REQUEST['post_id']);
+			foreach( $sizes as $key => $value ){
+				if( $type == 'producto' ){
+					if( $value != 'producto_thumb' and $value != 'producto_fotogaleria' ){
+						unset( $sizes[$key] );
+					}
 				}
 			}
 		}
@@ -289,6 +291,7 @@
 		$attachment = ( isset($_POST['attachment']) ) ? $_POST['attachment'] : false;
 		$result     = update_post_meta($attachment['id'], '_main_slider', 'true');
 		echo json_encode($attachment);
+		exit;
 	}
 	add_action('wp_ajax_set_slider_image', 'set_slider_image');
 	add_action('wp_ajax_nopriv_set_slider_image', 'set_slider_image');

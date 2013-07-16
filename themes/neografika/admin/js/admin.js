@@ -76,14 +76,10 @@
 				data: {
 					attachment: attachment,
 					action: 'set_slider_image'
-				},
-				dataType: 'json'
+				}
 			});
 
 			jqxhr.done(function (data, textStatus, jqXHR) {
-				console.log('done');
-				console.log(data);
-				//data = data.substring(0, data.length - 1);
 				display_image(data);
 			});
 		};
@@ -92,7 +88,6 @@
 		function display_image (json) {
 
 			var imageData = JSON.parse(json);
-			 console.log(imageData);
 
 			var imagen = $('<img />', {
 				'src'     : imageData.url,
@@ -189,7 +184,7 @@
 		}
 
 
-		$('.slider-preview').on('click', function (e) {
+		$('.slider-preview').live('click', function (e) {
 			var borrar = confirm('Borrar Imagen?');
 			if ( borrar ){
 				delete_attachment_by_id( $(this).data('id') );
