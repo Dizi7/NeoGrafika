@@ -29,7 +29,7 @@
 			<?php foreach ($categories as $categorie) : ?>
 			<div class="category-wrapper">
 				<div class="category-info">
-					<h3><?= $categorie->name ?></h3>
+					<h3><a href="<?= site_url("/categoria/$categorie->slug/"); ?>"><?= $categorie->name ?></a></h3>
 					<p><?= $categorie->description ?></p>
 				</div>
 
