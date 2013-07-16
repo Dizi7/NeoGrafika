@@ -23,7 +23,7 @@
 						<strong>Estado: </strong><?= $meta['estado'] ?><br/>
 						<strong>CP: </strong><?= $meta['postal'] ?><br/>
 						<strong>Teléfono: </strong><?= $meta['telefono'] ?><br/>
-						<strong>Website: </strong><a href="<?= $meta['website'] ?>"><?= $meta['website'] ?></a>
+						<strong>Website: </strong><a href="http://<?= $meta['website'] ?>"><?= $meta['website'] ?></a>
 					</p>
 				</div>
 
