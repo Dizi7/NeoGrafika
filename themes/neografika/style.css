@@ -434,6 +434,15 @@ blockquote p {
     margin: 0 auto;
     padding: 60px 0;
 }
+.innerTweet {
+    width: 1110px;
+    margin: 0 auto;
+    padding: 30px 0 35px;
+}
+.twitterStatus{
+    font-family: 'fontello';
+    font-size: 16px;
+}
 header .logo {
     float: left
 }
@@ -2554,7 +2563,11 @@ media_tag_5 {media_subcode:5}
     position: relative;
     word-break: break-word;
 }
-#twitter ul:before {
+
+.icon-twitter{
+    display: block; /* york */
+}
+.icon-twitter:before {
     font-family: 'fontello-social';
     font-style: normal;
     font-weight: normal;
@@ -2562,10 +2575,11 @@ media_tag_5 {media_subcode:5}
     display: block;
     text-decoration: inherit;
     content: '\f309';
-    font-size: 30px;
+    font-size: 60px;
     color: #d0d0d0;
     margin-right: 10px;
     margin-bottom: 10px;
+
 }
 /*-----------------------------------------------------------------------------------*/
 /*	SHOWCASE

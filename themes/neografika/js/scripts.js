@@ -835,14 +835,44 @@
 	/*-----------------------------------------------------------------------------------*/
 	/*	TWITTER
 	/*-----------------------------------------------------------------------------------*/
-	getTwitters('twitter', {
-		id: 'neografikaMX',
-		count: 1,
-		enableLinks: true,
-		ignoreReplies: false,
-		template: '<span class="twitterPrefix"><span class="twitterStatus">%text%</span><br /><em class="twitterTime"><a href="http://twitter.com/%user_screen_name%/statuses/%id_str%">%time%</a></em>',
-		newwindow: true
+
+	Handlebars.registerHelper('date', function (fecha) {
+		return new Date(fecha).toDateString();
 	});
+
+	Handlebars.registerHelper('parse_links', function (text) {
+		var regExp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+		var result = text.replace( regExp, "<a href='$1' target='_blank' rel='nofollow'>$1</a>");
+		return new Handlebars.SafeString(result);
+	});
+
+	window.Twitter = {
+
+		init: function (config) {
+			this.template  = config.template;
+			this.container = config.container;
+			this.Tweet     = Twitter.getTweet();
+		},
+
+		getTweet: function () {
+			$.getJSON( ajax_url, { action: 'get_neografika_tweet' } )
+			.done(function (json) {
+				Twitter.attachTemplate(json[0]);
+			});
+		},
+
+		attachTemplate: function (json) {
+			var template = Handlebars.compile( this.template );
+			this.container.append( template( json ) );
+		}
+	};
+
+	Twitter.init({
+		template: $('#tweets-template').html(),
+		container: $('#twitter')
+	});
+
+
 	/*-----------------------------------------------------------------------------------*/
 	/*	SELECTNAV
 	/*-----------------------------------------------------------------------------------*/

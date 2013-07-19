@@ -29,9 +29,12 @@
 		wp_enqueue_script('themepunch', JSPATH.'jquery.themepunch.plugins.min.js', array('jquery'), false, false );
 		wp_enqueue_script('revolution', JSPATH.'jquery.themepunch.revolution.min.js', array('jquery'), false, false );
 		wp_enqueue_script('touchcarousel', JSPATH.'jquery.touchcarousel-1.2.min.js', array('jquery'), false, false );
-		wp_enqueue_script('twitter', JSPATH.'twitter.min.js', '', false, false );
 		wp_enqueue_script('boostrapslider', JSPATH.'boostrapslider.js', '', false, false );
-		wp_enqueue_script('scripts', JSPATH.'scripts.js',  array('jquery'), false, true );
+		wp_enqueue_script('handlebars', 'http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js', '', false, false );
+
+		wp_enqueue_script('scripts', JSPATH.'scripts.js',  array('jquery', 'handlebars'), false, true );
+
+		// localize scripts
 		wp_localize_script('scripts', 'ajax_url',  get_bloginfo('wpurl').'/wp-admin/admin-ajax.php');
 		wp_localize_script('scripts', 'is_home', $is_home);
 
@@ -391,3 +394,57 @@
 		}
 		return $result;
 	}
+
+
+	include_once('inc/twitteroauth/twitteroauth.php');
+
+
+	define( 'CONSUMER_KEY', 'Q2pFPvOkG3cdynrqqZAg' );
+	define( 'CONSUMER_SECRET', 'lSnpOri1L1w7HCigP2xoMHdUprPrRYkX7lTZd1UhhY' );
+	define( 'OAUTH_CALLBACK', 'http://www.neografika.mx' );
+
+
+	add_action('init', function(){
+		set_neografika_tweet();
+	});
+
+
+	function set_neografika_tweet(){
+		$tweet = get_transient( 'neografika-tweet' );
+		if ( !$tweet ){
+			$oauth_token        = '894495462-klj9653KmhvvNE3yIcvxBvmPMrYJHyuXjyceUYY9';
+			$oauth_token_secret = 'Ue76UBv38rcBS5jg7RMkchyQL3NRL5CTtpaquBU3Vg';
+
+			$connection = new TwitterOAuth(
+				CONSUMER_KEY,
+				CONSUMER_SECRET,
+				$oauth_token,
+				$oauth_token_secret
+			);
+
+			$tweet = $connection->get(
+				'statuses/user_timeline',
+				array(
+					'count'       => 1,
+					'screen_name' => 'NeografikaMX'
+				)
+			);
+			set_transient( 'neografika-tweet', $tweet, 900 );
+			return $tweet;
+		} else {
+			return $tweet;
+		}
+	}
+
+
+	/**
+	 * Regresa un JSON con todos los datos del ultimo tweet
+	 * @return tweet JSON
+	 */
+	function get_neografika_tweet(){
+		$tweet = get_transient( 'neografika-tweet' );
+		echo json_encode($tweet);
+		exit;
+	}
+	add_action('wp_ajax_get_neografika_tweet', 'get_neografika_tweet');
+	add_action('wp_ajax_nopriv_get_neografika_tweet', 'get_neografika_tweet');
