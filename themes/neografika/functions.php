@@ -396,7 +396,7 @@
 	}
 
 
-	include_once('inc/twitteroauth/twitteroauth.php');
+/*	include_once('inc/twitteroauth/twitteroauth.php');
 
 
 	define( 'CONSUMER_KEY', 'Q2pFPvOkG3cdynrqqZAg' );
@@ -447,4 +447,4 @@
 		exit;
 	}
 	add_action('wp_ajax_get_neografika_tweet', 'get_neografika_tweet');
-	add_action('wp_ajax_nopriv_get_neografika_tweet', 'get_neografika_tweet');
+	add_action('wp_ajax_nopriv_get_neografika_tweet', 'get_neografika_tweet');*/
