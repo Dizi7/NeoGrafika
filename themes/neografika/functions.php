@@ -435,12 +435,15 @@
 			return $tweet;
 		}
 	}
+	*/
 
 
 	/**
 	 * Regresa un JSON con todos los datos del ultimo tweet
 	 * @return tweet JSON
 	 */
+
+	/*
 	function get_neografika_tweet(){
 		$tweet = get_transient( 'neografika-tweet' );
 		echo json_encode($tweet);
