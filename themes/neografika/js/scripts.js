@@ -836,7 +836,7 @@
 	/*	TWITTER
 	/*-----------------------------------------------------------------------------------*/
 
-	Handlebars.registerHelper('date', function (fecha) {
+/*	Handlebars.registerHelper('date', function (fecha) {
 		return new Date(fecha).toDateString();
 	});
 
@@ -870,7 +870,7 @@
 	Twitter.init({
 		template: $('#tweets-template').html(),
 		container: $('#twitter')
-	});
+	});*/
 
 
 	/*-----------------------------------------------------------------------------------*/
