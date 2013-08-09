@@ -396,7 +396,7 @@
 	}
 
 
-/*	include_once('inc/twitteroauth/twitteroauth.php');
+	include_once('inc/twitteroauth/twitteroauth.php');
 
 
 	define( 'CONSUMER_KEY', 'Q2pFPvOkG3cdynrqqZAg' );
@@ -435,7 +435,7 @@
 			return $tweet;
 		}
 	}
-	*/
+
 
 
 	/**
@@ -443,11 +443,11 @@
 	 * @return tweet JSON
 	 */
 
-	/*
+
 	function get_neografika_tweet(){
 		$tweet = get_transient( 'neografika-tweet' );
 		echo json_encode($tweet);
 		exit;
 	}
 	add_action('wp_ajax_get_neografika_tweet', 'get_neografika_tweet');
-	add_action('wp_ajax_nopriv_get_neografika_tweet', 'get_neografika_tweet');*/
+	add_action('wp_ajax_nopriv_get_neografika_tweet', 'get_neografika_tweet');
