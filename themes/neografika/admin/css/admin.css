@@ -11,6 +11,7 @@ div.input-group label { display: block; float: left; width: 120px; font-size: 12
 #google_help  { font-size: 14px; color: #858585; margin-left: 5px; cursor: pointer; font-size: 11px; }
 
 .fotogaleria{
+	background-size: cover !important;
 	height: 200px;
 	margin-bottom: 20px;
 	background: white;
@@ -38,5 +39,5 @@ div.input-group label { display: block; float: left; width: 120px; font-size: 12
 .producto-meta input{ margin-bottom: 10px; }
 
 #slider-images{ padding-top: 25px; }
-#slider-images .slider-preview{ width: 600px; height: 250px; margin-bottom: 10px; cursor: pointer; }
+#slider-images .slider-preview{ width: 600px; height: 320px; margin-bottom: 10px; cursor: pointer; }
 #slider-images .slider-preview:hover{ opacity: 0.8 };

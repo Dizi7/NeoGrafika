@@ -77,7 +77,7 @@ METABOX;
 			<div>
 				<input type="file" class="input-img" name="_fotogaleria[]">
 				<input type="submit" class="button eliminar-img" data-post_id="" value="Eliminar">
-				<div class="fotogaleria"></div>
+				<div class="fotogaleria" style="background-size: cover;"></div>
 			</div>
 			<h4 id="image-add-toggle">
 				<a href="#image-add">+ Añadir nueva imagen</a>
