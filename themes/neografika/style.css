@@ -440,8 +440,8 @@ blockquote p {
     padding: 30px 0 35px;
 }
 .twitterStatus{
-    font-family: 'fontello';
-    font-size: 16px;
+    /*font-family: 'fontello';*/
+    font-size: 17px;
 }
 header .logo {
     float: left
