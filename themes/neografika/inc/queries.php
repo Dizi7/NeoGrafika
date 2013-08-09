@@ -19,8 +19,7 @@
 		global $wpdb;
 		return $wpdb->get_results(
 			"SELECT ID, post_title AS title, post_content AS content,
-					post_excerpt AS subtitle, pm1.meta_value AS meta, name AS category FROM wp_posts
-				LEFT OUTER JOIN wp_postmeta AS pm1 ON ID = pm1.post_id AND pm1.meta_key = '_product_meta'
+					post_excerpt AS subtitle, name AS category FROM wp_posts
 				INNER JOIN wp_postmeta AS pm2 ON ID = pm2.post_id AND pm2.meta_key = '_product_featured' AND pm2.meta_value = 'true'
 					JOIN wp_term_relationships AS tr ON ID = tr.object_id
 					JOIN wp_term_taxonomy AS tt ON tr.term_taxonomy_id = tt.term_taxonomy_id

@@ -31,10 +31,12 @@
 					<?php $products = get_products_data();
 						foreach ($products as $index => $product) {
 
-							$precio = isset($product->meta['precio']) ? $product->meta['precio'] : '';
-							$sku    = isset($product->meta['sku'])    ? $product->meta['sku']    : '';
-							$size   = isset($product->meta['size'])   ? $product->meta['size']   : '';
-							$weight = isset($product->meta['weight']) ? $product->meta['weight'] : '';
+							$meta = get_post_meta($product->ID, '_product_meta', true);
+							$precio = isset($meta['precio']) ? $meta['precio'] : '';
+							$sku    = isset($meta['sku'])    ? $meta['sku']    : '';
+							$size   = isset($meta['size'])   ? $meta['size']   : '';
+							$weight = isset($meta['weight']) ? $meta['weight'] : '';
+
 							$images = product_slider_images($product->ID); ?>
 
 							<li class="item <?= $product->category ?> web" data-callback="callPortfolioScripts();"
