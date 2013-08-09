@@ -2850,4 +2850,9 @@ media_tag_5 {media_subcode:5}
 
 .item img{
     width: 100%;
+    height: auto;
+}
+
+.slotholder img{
+    height: auto !important;
 }
